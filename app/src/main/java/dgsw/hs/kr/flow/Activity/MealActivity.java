@@ -1,4 +1,4 @@
-package dgsw.hs.kr.flow;
+package dgsw.hs.kr.flow.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import org.hyunjun.school.SchoolMenu;
+
+import dgsw.hs.kr.flow.MealParsing;
+import dgsw.hs.kr.flow.R;
 
 
 public class MealActivity extends AppCompatActivity {

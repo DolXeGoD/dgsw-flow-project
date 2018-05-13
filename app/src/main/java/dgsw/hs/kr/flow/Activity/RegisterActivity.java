@@ -1,4 +1,4 @@
-package dgsw.hs.kr.flow;
+package dgsw.hs.kr.flow.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +10,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import dgsw.hs.kr.flow.APIUtills;
 import dgsw.hs.kr.flow.Model.request.Register;
 import dgsw.hs.kr.flow.Model.response.FlowAPIResponse;
+import dgsw.hs.kr.flow.R;
+import dgsw.hs.kr.flow.RetrofitService;
 import dgsw.hs.kr.flow.Utils.EmailPttrnValidation;
 import dgsw.hs.kr.flow.Utils.PwPttrnValidation;
 import dgsw.hs.kr.flow.Utils.RePwValidation;

@@ -1,4 +1,4 @@
-package dgsw.hs.kr.flow;
+package dgsw.hs.kr.flow.Activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
+
+import dgsw.hs.kr.flow.MealTime;
+import dgsw.hs.kr.flow.R;
 
 public class MainActivity extends AppCompatActivity {
 
