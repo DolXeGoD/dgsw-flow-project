@@ -10,11 +10,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import dgsw.hs.kr.flow.APIUtills;
+import dgsw.hs.kr.flow.Network.APIUtills;
 import dgsw.hs.kr.flow.Model.request.Register;
-import dgsw.hs.kr.flow.Model.response.FlowAPIResponse;
+import dgsw.hs.kr.flow.Model.response.registerResponse;
+import dgsw.hs.kr.flow.Network.RetrofitService;
 import dgsw.hs.kr.flow.R;
-import dgsw.hs.kr.flow.RetrofitService;
 import dgsw.hs.kr.flow.Utils.EmailPttrnValidation;
 import dgsw.hs.kr.flow.Utils.PwPttrnValidation;
 import dgsw.hs.kr.flow.Utils.RePwValidation;
@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
     private RetrofitService mRTService;
-    private Call<FlowAPIResponse> mResponse;
+    private Call<registerResponse> mResponse;
 
     //Get Class For Utils
     private RePwValidation repwv = new RePwValidation();
@@ -101,9 +101,9 @@ public class RegisterActivity extends AppCompatActivity {
                             //(Retrofit) 서버로 전송
                             mRTService = APIUtills.getAPIService();
                             mResponse = mRTService.registerPost(register);
-                            mResponse.enqueue(new Callback<FlowAPIResponse>() {
+                            mResponse.enqueue(new Callback<registerResponse>() {
                                 @Override
-                                public void onResponse(Call<FlowAPIResponse> call, Response<FlowAPIResponse> response) {
+                                public void onResponse(Call<registerResponse> call, Response<registerResponse> response) {
                                     if(response.isSuccessful()){
                                         // DEBUG
                                         Log.i(TAG,"response msg : " + response.message().toString());
@@ -115,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
 
                                 @Override
-                                public void onFailure(Call<FlowAPIResponse> call, Throwable t) {
+                                public void onFailure(Call<registerResponse> call, Throwable t) {
                                     Log.e(TAG, "서버가 현재 점검중입니다.");
                                 }
                             });

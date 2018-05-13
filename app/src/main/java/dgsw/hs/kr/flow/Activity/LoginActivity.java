@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import dgsw.hs.kr.flow.APIUtills;
+import dgsw.hs.kr.flow.Network.APIUtills;
 import dgsw.hs.kr.flow.Model.request.Login;
 import dgsw.hs.kr.flow.Model.response.loginResponse;
+import dgsw.hs.kr.flow.Network.RetrofitService;
 import dgsw.hs.kr.flow.R;
-import dgsw.hs.kr.flow.RetrofitService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private String email;
     private String pw;
     private RetrofitService mRTService;
-    private Call<loginResponse> mResonse;
+    private Call<loginResponse> mResponse;
     private static final String TAG = "LoginActivity";
 
     @Override
@@ -49,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
                 //아이디나 비밀번호 칸 미입력 여부 검사
                 if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pw)){
                     mRTService = APIUtills.getAPIService();
-                    mResonse = mRTService.loginPost(login);
-                    mResonse.enqueue(new Callback<loginResponse>() {
+                    mResponse = mRTService.loginPost(login);
+                    mResponse.enqueue(new Callback<loginResponse>() {
                         @Override
                         public void onResponse(Call<loginResponse> call, Response<loginResponse> response) {
                             if (response.isSuccessful()) {

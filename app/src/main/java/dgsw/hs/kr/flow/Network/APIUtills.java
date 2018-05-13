@@ -1,4 +1,4 @@
-package dgsw.hs.kr.flow;
+package dgsw.hs.kr.flow.Network;
 
 /**
  * Created by 조현재 on 2018-04-16.
