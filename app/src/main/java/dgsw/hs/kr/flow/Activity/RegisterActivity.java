@@ -23,10 +23,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    //etc var
     private Spinner spinner_classIdx;
     private Spinner spinner_classNum;
-
     private String email;
     private String pw;
     private String repw;
@@ -35,12 +34,11 @@ public class RegisterActivity extends AppCompatActivity {
     private String mobile;
     private int class_idx;
     private int class_number;
-
     private static final String TAG = "RegisterActivity";
     private RetrofitService mRTService;
     private Call<registerResponse> mResponse;
 
-    //Get Class For Utils
+    //Get Validation Tools from Utils
     private RePwValidation repwv = new RePwValidation();
     private PwPttrnValidation pwv = new PwPttrnValidation();
     private EmailPttrnValidation emailv = new EmailPttrnValidation();

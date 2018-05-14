@@ -19,14 +19,14 @@
         <activity android:name="dgsw.hs.kr.flow.Activity.MainActivity"></activity>
         <activity android:name="dgsw.hs.kr.flow.Activity.MealActivity" />
         <activity android:name="dgsw.hs.kr.flow.Activity.RegisterActivity">
+
+        </activity>
+        <activity android:name="dgsw.hs.kr.flow.Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="dgsw.hs.kr.flow.Activity.LoginActivity">
-
         </activity>
     </application>
 

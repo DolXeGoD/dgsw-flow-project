@@ -33,10 +33,10 @@ public class DBManager extends SQLiteOpenHelper{
 
     public void insert(String token){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO t_token(token) VALUES(" + token +")");
+        db.execSQL("INSERT INTO t_token(token) VALUES('" + token +"')");
     }
 
-    public void debug(){
+    public void selectTest(){
         SQLiteDatabase db = getWritableDatabase();
 
         String query = "SELECT * FROM t_token";
@@ -49,6 +49,6 @@ public class DBManager extends SQLiteOpenHelper{
             testToken = cursor.getString(1);
         }
 
-        Log.i("fuck u", testIdx + " | " + testToken);
+        Log.i("this is token log", testIdx + " | " + testToken);
     }
 }

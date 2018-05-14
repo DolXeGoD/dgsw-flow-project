@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import dgsw.hs.kr.flow.Database.DBManager;
 import dgsw.hs.kr.flow.Network.APIUtills;
 import dgsw.hs.kr.flow.Model.request.Login;
 import dgsw.hs.kr.flow.Model.response.loginResponse;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private String email;
     private String pw;
+    private String userToken;
     private RetrofitService mRTService;
     private Call<loginResponse> mResponse;
     private static final String TAG = "LoginActivity";
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
         final EditText emailEt = findViewById(R.id.login_et_email);
         final EditText pwEt = findViewById(R.id.login_et_pw);
         Button loginBtn = findViewById(R.id.btn_login);
@@ -61,10 +64,14 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.i(TAG, "server msg : " + response.body().getMessage());
                                 Log.i(TAG, "server code : " + response.body().getStatus());
 
-                                Log.i(TAG, "USER EMAIL : " + response.body().getEmail());
-                                Log.i(TAG, "USER NAME : " + response.body().getName());
-                                Log.i(TAG, "USER TOKEN : " + response.body().getToken());
+                                Log.i(TAG, "USER TOKEN : " + response.body().getData().getToken());
 
+                                userToken = response.body().getData().getToken();
+                                //DB에 유저 토큰 저장.
+                                dbManager.insert(userToken);
+
+                                //db 조회해서 토큰 값 있는지 확인
+                                dbManager.selectTest();
                             }
                         }
 
