@@ -1,10 +1,10 @@
 package dgsw.hs.kr.flow.Model.response;
 
 /**
- * Created by 조현재 on 2018-05-08.
+ * Created by 조현재 on 2018-05-14.
  */
 
-public class loginResponse {
+public class ResponseFormat {
     private int status;
     private String message;
     private Data data;
@@ -29,4 +29,3 @@ public class loginResponse {
 
     public void setData(Data data) { this.data = data; }
 }
-

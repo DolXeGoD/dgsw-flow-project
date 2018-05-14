@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import dgsw.hs.kr.flow.Database.DBManager;
-import dgsw.hs.kr.flow.Network.APIUtills;
 import dgsw.hs.kr.flow.Model.request.Login;
-import dgsw.hs.kr.flow.Model.response.loginResponse;
+import dgsw.hs.kr.flow.Model.response.ResponseFormat;
+import dgsw.hs.kr.flow.Network.APIUtills;
 import dgsw.hs.kr.flow.Network.RetrofitService;
 import dgsw.hs.kr.flow.R;
 import retrofit2.Call;
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private String pw;
     private String userToken;
     private RetrofitService mRTService;
-    private Call<loginResponse> mResponse;
+    private Call<ResponseFormat> mResponse;
     private static final String TAG = "LoginActivity";
 
     @Override
@@ -53,9 +53,9 @@ public class LoginActivity extends AppCompatActivity {
                 if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pw)){
                     mRTService = APIUtills.getAPIService();
                     mResponse = mRTService.loginPost(login);
-                    mResponse.enqueue(new Callback<loginResponse>() {
+                    mResponse.enqueue(new Callback<ResponseFormat>() {
                         @Override
-                        public void onResponse(Call<loginResponse> call, Response<loginResponse> response) {
+                        public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
                             if (response.isSuccessful()) {
                                 //DEBUG
                                 Log.i(TAG, "response msg : " + response.message().toString());
@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.i(TAG, "USER TOKEN : " + response.body().getData().getToken());
 
                                 userToken = response.body().getData().getToken();
+
                                 //DB에 유저 토큰 저장.
                                 dbManager.insert(userToken);
 
@@ -76,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<loginResponse> call, Throwable t) {
+                        public void onFailure(Call<ResponseFormat> call, Throwable t) {
                             Log.e(TAG, "Login Failed");
                         }
                     });

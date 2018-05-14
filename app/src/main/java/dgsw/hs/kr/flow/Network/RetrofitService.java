@@ -2,10 +2,10 @@ package dgsw.hs.kr.flow.Network;
 
 import dgsw.hs.kr.flow.Model.request.Login;
 import dgsw.hs.kr.flow.Model.request.Register;
-import dgsw.hs.kr.flow.Model.response.registerResponse;
-import dgsw.hs.kr.flow.Model.response.loginResponse;
+import dgsw.hs.kr.flow.Model.response.ResponseFormat;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /**
@@ -14,8 +14,14 @@ import retrofit2.http.POST;
 
 public interface RetrofitService {
     @POST("auth/signup")
-    Call<registerResponse> registerPost(@Body Register register);
+    Call<ResponseFormat> registerPost(@Body Register register);
 
     @POST("auth/signin")
-    Call<loginResponse> loginPost(@Body Login login);
+    Call<ResponseFormat> loginPost(@Body Login login);
+
+ /*   @POST("out/go")
+    Call<ResponseFormat> goOutPost(@Body Out out);
+
+    @POST("out/sleep")
+    Call<ResponseFormat> goSleepPost(@Body Out out);*/
 }

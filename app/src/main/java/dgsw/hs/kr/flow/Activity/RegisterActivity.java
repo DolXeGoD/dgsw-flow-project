@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import dgsw.hs.kr.flow.Model.response.ResponseFormat;
 import dgsw.hs.kr.flow.Network.APIUtills;
 import dgsw.hs.kr.flow.Model.request.Register;
-import dgsw.hs.kr.flow.Model.response.registerResponse;
 import dgsw.hs.kr.flow.Network.RetrofitService;
 import dgsw.hs.kr.flow.R;
 import dgsw.hs.kr.flow.Utils.EmailPttrnValidation;
@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private int class_number;
     private static final String TAG = "RegisterActivity";
     private RetrofitService mRTService;
-    private Call<registerResponse> mResponse;
+    private Call<ResponseFormat> mResponse;
 
     //Get Validation Tools from Utils
     private RePwValidation repwv = new RePwValidation();
@@ -99,9 +99,9 @@ public class RegisterActivity extends AppCompatActivity {
                             //(Retrofit) 서버로 전송
                             mRTService = APIUtills.getAPIService();
                             mResponse = mRTService.registerPost(register);
-                            mResponse.enqueue(new Callback<registerResponse>() {
+                            mResponse.enqueue(new Callback<ResponseFormat>() {
                                 @Override
-                                public void onResponse(Call<registerResponse> call, Response<registerResponse> response) {
+                                public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
                                     if(response.isSuccessful()){
                                         // DEBUG
                                         Log.i(TAG,"response msg : " + response.message().toString());
@@ -113,7 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
 
                                 @Override
-                                public void onFailure(Call<registerResponse> call, Throwable t) {
+                                public void onFailure(Call<ResponseFormat> call, Throwable t) {
                                     Log.e(TAG, "서버가 현재 점검중입니다.");
                                 }
                             });
