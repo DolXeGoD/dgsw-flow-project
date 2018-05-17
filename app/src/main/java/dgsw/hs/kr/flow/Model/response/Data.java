@@ -3,7 +3,7 @@ package dgsw.hs.kr.flow.Model.response;
 /**
  * Created by 조현재 on 2018-05-14.
  */
-
+//responseformat - data
 public class Data {
     private String token;
     private GoOut go_out;

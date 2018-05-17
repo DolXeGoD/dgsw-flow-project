@@ -4,6 +4,7 @@ package dgsw.hs.kr.flow.Model.response;
  * Created by 조현재 on 2018-05-14.
  */
 
+//responseformat - data - sleepout
 public class SleepOut {
     private int idx;
     private String start_time;

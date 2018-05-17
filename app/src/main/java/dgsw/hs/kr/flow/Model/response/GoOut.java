@@ -5,7 +5,7 @@ import java.sql.Date;
 /**
  * Created by 조현재 on 2018-05-14.
  */
-
+//responseformat - data -goout
 public class GoOut {
     private int idx;
     private String start_time;
