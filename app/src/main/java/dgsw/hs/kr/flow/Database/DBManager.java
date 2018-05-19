@@ -36,7 +36,7 @@ public class DBManager extends SQLiteOpenHelper{
         db.execSQL("INSERT INTO t_token(token) VALUES('" + token +"')");
     }
 
-    public void selectTest(){
+    public String selectTest(){
         SQLiteDatabase db = getWritableDatabase();
 
         String query = "SELECT * FROM t_token";
@@ -50,5 +50,7 @@ public class DBManager extends SQLiteOpenHelper{
         }
 
         Log.i("this is token log", testIdx + " | " + testToken);
+
+        return testToken;
     }
 }
