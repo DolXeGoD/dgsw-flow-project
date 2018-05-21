@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import org.hyunjun.school.SchoolMenu;
 
-import dgsw.hs.kr.flow.MealParsing;
+import dgsw.hs.kr.flow.Network.MealParsing;
 import dgsw.hs.kr.flow.R;
 
 

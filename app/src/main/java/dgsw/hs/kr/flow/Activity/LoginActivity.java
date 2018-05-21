@@ -13,7 +13,7 @@ import android.widget.Toast;
 import dgsw.hs.kr.flow.Database.DBManager;
 import dgsw.hs.kr.flow.Model.request.Login;
 import dgsw.hs.kr.flow.Model.response.ResponseFormat;
-import dgsw.hs.kr.flow.Network.APIUtills;
+import dgsw.hs.kr.flow.Utils.APIUtills;
 import dgsw.hs.kr.flow.Network.RetrofitService;
 import dgsw.hs.kr.flow.R;
 import retrofit2.Call;
@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                                     //DB에 유저 토큰 저장.
                                     dbManager.insert(userToken);
                                     //db 조회해서 토큰 값 있는지 확인
-                                    dbManager.selectTest();
+                                    dbManager.select();
                                 } else{ //로그인 실패 시
                                     Toast.makeText(getApplicationContext(),"입력 양식이나 아이디, 비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
                                 }

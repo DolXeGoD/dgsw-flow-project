@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import dgsw.hs.kr.flow.Model.response.ResponseFormat;
-import dgsw.hs.kr.flow.Network.APIUtills;
+import dgsw.hs.kr.flow.Utils.APIUtills;
 import dgsw.hs.kr.flow.Model.request.Register;
 import dgsw.hs.kr.flow.Network.RetrofitService;
 import dgsw.hs.kr.flow.R;

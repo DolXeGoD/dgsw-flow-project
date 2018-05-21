@@ -36,7 +36,7 @@ public class DBManager extends SQLiteOpenHelper{
         db.execSQL("INSERT INTO t_token(token) VALUES('" + token +"')");
     }
 
-    public String selectTest(){
+    public String select(){
         SQLiteDatabase db = getWritableDatabase();
 
         String query = "SELECT * FROM t_token";

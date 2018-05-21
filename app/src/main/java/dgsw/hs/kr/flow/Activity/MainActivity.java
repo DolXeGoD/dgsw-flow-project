@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-import dgsw.hs.kr.flow.MealTime;
+import dgsw.hs.kr.flow.Utils.MealTime;
 import dgsw.hs.kr.flow.R;
 
 public class MainActivity extends AppCompatActivity {

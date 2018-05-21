@@ -1,4 +1,6 @@
-package dgsw.hs.kr.flow.Network;
+package dgsw.hs.kr.flow.Utils;
+
+import dgsw.hs.kr.flow.Network.RetrofitService;
 
 /**
  * Created by 조현재 on 2018-04-16.
