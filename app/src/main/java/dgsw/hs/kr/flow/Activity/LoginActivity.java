@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private String email;
     private String pw;
+    private String registration_token = "student036";
     private String userToken;
     private RetrofitService mRTService;
     private Call<ResponseFormat> mResponse;
@@ -48,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 Login login = new Login();
                 login.setEmail(email);
                 login.setPw(pw);
+                login.setRegistration_token(registration_token);
 
                 //아이디나 비밀번호 칸 미입력 여부 검사
                 if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pw)){

@@ -22,11 +22,11 @@ public interface RetrofitService {
     @POST("auth/signin")
     Call<ResponseFormat> loginPost(@Body Login login);
 
-    @POST("out/go")
+/*    @POST("out/go")
     Call<ResponseFormat> goOutPost(@Body Out out, @Header("x-access-token") String token);
 
     @POST("out/sleep")
-    Call<ResponseFormat> goSleepPost(@Body Out out, @Header("x-access-token") String token);
+    Call<ResponseFormat> goSleepPost(@Body Out out, @Header("x-access-token") String token);*/
 
 
 }

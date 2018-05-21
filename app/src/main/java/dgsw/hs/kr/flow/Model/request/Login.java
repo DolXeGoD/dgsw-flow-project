@@ -7,6 +7,7 @@ package dgsw.hs.kr.flow.Model.request;
 public class Login {
     private String email;
     private String pw;
+    private String registration_token;
 
     public String getEmail() {
         return email;
@@ -21,4 +22,7 @@ public class Login {
     public void setPw(String pw) {
         this.pw = pw;
     }
+
+    public String getRegistration_token() {return registration_token;}
+    public void setRegistration_token(String registration_token) {this.registration_token = registration_token;}
 }
