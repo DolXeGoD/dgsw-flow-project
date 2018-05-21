@@ -16,18 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="dgsw.hs.kr.flow.Activity.MainActivity"></activity>
-        <activity android:name="dgsw.hs.kr.flow.Activity.MealActivity" />
-        <activity android:name="dgsw.hs.kr.flow.Activity.RegisterActivity">
-
-        </activity>
-        <activity android:name="dgsw.hs.kr.flow.Activity.LoginActivity">
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.MealActivity" />
+        <activity android:name=".Activity.RegisterActivity"></activity>
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.OutActivity"></activity>
     </application>
 
 </manifest>

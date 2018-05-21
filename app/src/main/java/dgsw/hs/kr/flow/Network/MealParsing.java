@@ -17,7 +17,6 @@ public class MealParsing extends AsyncTask<Integer, Void, SchoolMenu> {
         School api = new School(School.Type.HIGH, School.Region.DAEGU, "D100000282");
 
         SchoolMenu menu = null;
-        String result = "";
 
         int year= integers[0];
         int month = integers[1];

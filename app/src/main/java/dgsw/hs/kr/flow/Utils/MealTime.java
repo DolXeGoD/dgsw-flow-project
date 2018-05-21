@@ -33,7 +33,7 @@ public class MealTime {
         return day;
     }
 
-    public int getMealTime() {
+    public int  getMealTime() {
         return mealTime;
     }
 
