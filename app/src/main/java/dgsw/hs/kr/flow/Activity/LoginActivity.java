@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import dgsw.hs.kr.flow.Database.DBManager;
 import dgsw.hs.kr.flow.Model.request.Login;
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 login.setPw(pw);
                 login.setRegistration_token(registration_token);
 
-                //아이디나 비밀번호 칸 미입력 여부 검사
+                //아이디&비밀번호 칸 미입력 여부 검사
                 if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pw)){
                     mRTService = APIUtills.getAPIService();
                     mResponse = mRTService.loginPost(login);
@@ -69,12 +70,14 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.i(TAG, "USER TOKEN : " + response.body().getData().getToken());
 
                                 userToken = response.body().getData().getToken();
-
-                                //DB에 유저 토큰 저장.
-                                dbManager.insert(userToken);
-
-                                //db 조회해서 토큰 값 있는지 확인
-                                dbManager.selectTest();
+                                if(userToken == null){
+                                    Toast.makeText(getApplicationContext(),"토큰 없음. 로그인 실패.",Toast.LENGTH_LONG );
+                                } else{
+                                    //DB에 유저 토큰 저장.
+                                    dbManager.insert(userToken);
+                                    //db 조회해서 토큰 값 있는지 확인
+                                    dbManager.selectTest();
+                                }
                             }
                         }
 
