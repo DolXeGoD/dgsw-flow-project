@@ -59,24 +59,25 @@ public class LoginActivity extends AppCompatActivity {
                     mResponse.enqueue(new Callback<ResponseFormat>() {
                         @Override
                         public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
+                            //서버 연결 성공 시
                             if (response.isSuccessful()) {
                                 //DEBUG
                                 Log.i(TAG, "response msg : " + response.message().toString());
                                 Log.i(TAG, "response code : " + response.code());
-
                                 Log.i(TAG, "server msg : " + response.body().getMessage());
                                 Log.i(TAG, "server code : " + response.body().getStatus());
 
-                                Log.i(TAG, "USER TOKEN : " + response.body().getData().getToken());
-
-                                userToken = response.body().getData().getToken();
-                                if(userToken == null){
-                                    Toast.makeText(getApplicationContext(),"토큰 없음. 로그인 실패.",Toast.LENGTH_LONG );
-                                } else{
+                                // 로그인 성공 시
+                                if(response.body().getStatus() == 200){
+                                    Toast.makeText(getApplicationContext(),"로그인 성공 !!!",Toast.LENGTH_LONG).show();
+                                    userToken = response.body().getData().getToken();
+                                    Log.i(TAG, "USER TOKEN : " + response.body().getData().getToken());
                                     //DB에 유저 토큰 저장.
                                     dbManager.insert(userToken);
                                     //db 조회해서 토큰 값 있는지 확인
                                     dbManager.selectTest();
+                                } else{ //로그인 실패 시
+                                    Toast.makeText(getApplicationContext(),"입력 양식이나 아이디, 비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
