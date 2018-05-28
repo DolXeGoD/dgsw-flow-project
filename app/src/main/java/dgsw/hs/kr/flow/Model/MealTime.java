@@ -1,4 +1,4 @@
-package dgsw.hs.kr.flow.Utils;
+package dgsw.hs.kr.flow.Model;
 
 /**
  * Created by 조현재 on 2018-03-27.

@@ -4,6 +4,127 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dgsw.hs.kr.flow.Activity.OutActivity">
+    android:background="@color/colorPrimary"
+    tools:context="dgsw.hs.kr.flow.Activity.OutActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="192dp"
+        android:background="@color/colorAccent"
+        android:text="Button"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/labelTv1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="44dp"
+        android:background="@color/colorAccent"
+        android:text="Button"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/labelTv2"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <EditText
+        android:id="@+id/login_et_pw"
+        android:layout_width="298dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="99dp"
+        android:backgroundTint="@android:color/white"
+        android:hint="사유"
+        android:lines="4"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_login"
+        app:layout_constraintStart_toStartOf="@+id/labelTv3"
+        app:layout_constraintTop_toBottomOf="@+id/labelTv2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/labelTv1"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginBottom="47dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="37dp"
+        android:text="외출 시작 시간"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/labelTv2"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginTop="58dp"
+        android:text="외출 종료 시간"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <TextView
+        android:id="@+id/labelTv3"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginBottom="63dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="78dp"
+        android:text="외출 사유"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/login_et_pw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="104dp"
+        android:buttonTint="@android:color/white"
+        android:checked="true"
+        android:text="외출"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:buttonTint="@android:color/white"
+        android:text="외박"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/checkBox2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:background="@color/colorAccent"
+        android:text="신청하기"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
