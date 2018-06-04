@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/labelTv2" />
 
     <EditText
-        android:id="@+id/login_et_pw"
+        android:id="@+id/et_reason"
         android:layout_width="0dp"
         android:layout_height="68dp"
         android:layout_marginBottom="44dp"
@@ -67,7 +67,7 @@
         android:backgroundTint="@android:color/white"
         android:hint="사유"
         android:lines="4"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintBottom_toTopOf="@+id/btn_goSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/labelTv3" />
@@ -131,7 +131,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_goSubmit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="26dp"
