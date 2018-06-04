@@ -48,12 +48,13 @@ public class LoginActivity extends AppCompatActivity {
                 pw = pwEt.getText().toString().trim();
 
                 Login login = new Login();
-                login.setEmail(email);
-                login.setPw(pw);
-                login.setRegistration_token(registration_token);
 
                 //아이디&비밀번호 칸 미입력 여부 검사
                 if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pw)){
+                    login.setEmail(email);
+                    login.setPw(pw);
+                    login.setRegistration_token(registration_token);
+
                     mRTService = APIUtills.getAPIService();
                     mResponse = mRTService.loginPost(login);
                     mResponse.enqueue(new Callback<ResponseFormat>() {
