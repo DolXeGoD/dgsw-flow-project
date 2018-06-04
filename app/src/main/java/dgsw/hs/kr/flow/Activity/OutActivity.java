@@ -96,6 +96,7 @@ public class OutActivity extends AppCompatActivity {
             day = dayOfMonth;
             Toast.makeText(getApplicationContext(), year +
                     "년" + month + "월" + day+"일", Toast.LENGTH_SHORT).show();
+            S_DATE = year+"-"+month+"-"+day;
         }
     };
 
@@ -106,6 +107,9 @@ public class OutActivity extends AppCompatActivity {
             minute = m;
             Toast.makeText(getApplicationContext(), hour + " 시" + minute +
                     " 분 입니다.", Toast.LENGTH_SHORT).show();
+            S_TIME = hour+":"+minute;
+            S_DATETIME = S_DATE+" "+S_TIME;
+            System.out.println(S_DATETIME);
         }
     };
 
@@ -117,6 +121,7 @@ public class OutActivity extends AppCompatActivity {
             day = dayOfMonth;
             Toast.makeText(getApplicationContext(), year +
                     "년" + month + "월" + day+"일", Toast.LENGTH_SHORT).show();
+            E_DATE = year+"-"+month+"-"+day;
         }
     };
 
@@ -127,6 +132,8 @@ public class OutActivity extends AppCompatActivity {
             minute = m;
             Toast.makeText(getApplicationContext(), hour + " 시" + minute +
                     " 분 입니다.", Toast.LENGTH_SHORT).show();
+            E_TIME = hour+":"+minute;
+            E_DATETIME = E_DATE+" "+E_TIME;
         }
     };
 }
