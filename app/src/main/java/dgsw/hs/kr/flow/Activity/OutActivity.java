@@ -16,12 +16,12 @@ import dgsw.hs.kr.flow.R; //R 오류가 왜 뜨는지 모르겠네 ㅠㅠ 돌려
 
 public class OutActivity extends AppCompatActivity {
 
-
     private int year;
     private int month;
     private int day;
     private int hour;
     private int minute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +29,18 @@ public class OutActivity extends AppCompatActivity {
 
         Button startdate_btn = findViewById(R.id.btn_setStartDate);
         Button enddate_btn = findViewById(R.id.btn_setEndDate);
+        Button starttime_btn = findViewById(R.id.btn_setStartTime);
+        Button endtime_btn = findViewById(R.id.btn_setEndTime);
+
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog Ddialog = new DatePickerDialog(this, dateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
         final TimePickerDialog Tdialog = new TimePickerDialog(this, timeListener, hour, minute, true);
 
         startdate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Ddialog.show();
-            }
+            public void onClick(View view) { Ddialog.show(); }
         });
+
 
         enddate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +58,7 @@ public class OutActivity extends AppCompatActivity {
             /*Toast.makeText(getApplicationContext(), thisYear + "년" + monthOfYear + "월" + dayOfMonth +"일", Toast.LENGTH_SHORT).show();*/
             year = thisYear;
             month = monthOfYear + 1;
-            day = dayOfMonth - 1;
+            day = dayOfMonth;
             Toast.makeText(getApplicationContext(), year +
                     "년" + month + "월" + day+"일", Toast.LENGTH_SHORT).show();
             /*mt.setDate(year, month, day, hour, minute);
