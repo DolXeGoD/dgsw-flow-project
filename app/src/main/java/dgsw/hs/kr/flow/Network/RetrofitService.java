@@ -26,7 +26,7 @@ public interface RetrofitService {
     Call<ResponseFormat> goOutPost(@Body Out out, @Header("x-access-token") String token);
 
     @POST("out/sleep")
-    Call<ResponseFormat> goSleepPost(@Body Out out, @Header("x-access-token") String token);
+    Call<ResponseFormat> sleepOutPost(@Body Out out, @Header("x-access-token") String token);
 
 
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -20,6 +21,8 @@ import dgsw.hs.kr.flow.Network.RetrofitService;
 import dgsw.hs.kr.flow.R; //R 오류가 왜 뜨는지 모르겠네 ㅠㅠ 돌려막기
 import dgsw.hs.kr.flow.Utils.APIUtills;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class OutActivity extends AppCompatActivity {
 
@@ -36,7 +39,7 @@ public class OutActivity extends AppCompatActivity {
     private String E_DATETIME;
     private String REASON_TO_OUT;
     private String USER_TOKEN;
-    private boolean isSleep;
+    private boolean isUserSleep; // true = sleep, false = go
     private RetrofitService mRTService;
     private Call<ResponseFormat> mResponse;
 
@@ -50,8 +53,11 @@ public class OutActivity extends AppCompatActivity {
         Button starttime_btn = findViewById(R.id.btn_setStartTime);
         Button endtime_btn = findViewById(R.id.btn_setEndTime);
         Button submit_btn = findViewById(R.id.btn_outSubmit);
+        CheckBox isGo = findViewById(R.id.isGoOut);
+        CheckBox isSleep = findViewById(R.id.isSleepOut);
         final EditText reason_et = findViewById(R.id.et_reason);
 
+        USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MSwiYXV0aCI6MiwiaWF0IjoxNTI2MjU2NTc3LCJleHAiOjE1MjY4NjEzNzcsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.k2komltlnHHar7fj6b7BJ7dmfxgxvrobx9awtr4MutY";
 
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog S_Ddialog = new DatePickerDialog(this, sdateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
@@ -59,6 +65,11 @@ public class OutActivity extends AppCompatActivity {
         final DatePickerDialog E_Ddialog = new DatePickerDialog(this, edateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
         final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, hour, minute, true);
 
+        if(isGo.isChecked() == true && isSleep.isChecked() == false){
+            isUserSleep = false;
+        } else{
+            isUserSleep = true;
+        }
         //================================= OnClick Listener About DATE & TIME
         startdate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,8 +126,34 @@ public class OutActivity extends AppCompatActivity {
                     out.setReason(REASON_TO_OUT);
 
                     mRTService = APIUtills.getAPIService();
-                    mResponse = mRTService.goOutPost(out, USER_TOKEN);
+                    if(isUserSleep == true){
+                        mResponse = mRTService.sleepOutPost(out, USER_TOKEN);
+                        mResponse.enqueue(new Callback<ResponseFormat>() {
+                            @Override
+                            public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
 
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseFormat> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                    else if(isUserSleep == false){
+                        mResponse = mRTService.goOutPost(out, USER_TOKEN);
+                        mResponse.enqueue(new Callback<ResponseFormat>() {
+                            @Override
+                            public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseFormat> call, Throwable t) {
+
+                            }
+                        });
+                    }
                 }
             }
         });
