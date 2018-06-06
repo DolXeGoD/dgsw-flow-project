@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -39,6 +40,7 @@ public class OutActivity extends AppCompatActivity {
     private String E_DATETIME;
     private String REASON_TO_OUT;
     private String USER_TOKEN;
+    private static final String TAG = "OutActivity";
     private boolean isUserSleep; // true = sleep, false = go
     private RetrofitService mRTService;
     private Call<ResponseFormat> mResponse;
@@ -131,7 +133,10 @@ public class OutActivity extends AppCompatActivity {
                         mResponse.enqueue(new Callback<ResponseFormat>() {
                             @Override
                             public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
-
+                                if(response.isSuccessful()){
+                                    Log.i(TAG, "response msg : " + response.message().toString());
+                                    Log.i(TAG, "response code : " + response.code());
+                                }
                             }
 
                             @Override
