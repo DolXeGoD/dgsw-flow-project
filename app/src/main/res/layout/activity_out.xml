@@ -18,7 +18,7 @@
         android:text="시작 시간"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+        app:layout_constraintTop_toBottomOf="@+id/isSleepOut" />
 
     <Button
         android:id="@+id/btn_setStartDate"
@@ -67,7 +67,7 @@
         android:backgroundTint="@android:color/white"
         android:hint="사유"
         android:lines="4"
-        app:layout_constraintBottom_toTopOf="@+id/btn_goSubmit"
+        app:layout_constraintBottom_toTopOf="@+id/btn_outSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/labelTv3" />
@@ -105,7 +105,7 @@
         app:layout_constraintStart_toStartOf="@+id/login_et_pw" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/isGoOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
@@ -113,11 +113,11 @@
         android:checked="true"
         android:text="외출"
         android:textColor="@android:color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/checkBox3"
+        app:layout_constraintBaseline_toBaselineOf="@+id/isSleepOut"
         app:layout_constraintStart_toEndOf="@+id/labelTv1" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/isSleepOut"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginBottom="103dp"
@@ -131,7 +131,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_goSubmit"
+        android:id="@+id/btn_outSubmit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="26dp"

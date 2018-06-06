@@ -35,6 +35,8 @@ public class OutActivity extends AppCompatActivity {
     private String E_TIME;
     private String E_DATETIME;
     private String REASON_TO_OUT;
+    private String USER_TOKEN;
+    private boolean isSleep;
     private RetrofitService mRTService;
     private Call<ResponseFormat> mResponse;
 
@@ -47,8 +49,9 @@ public class OutActivity extends AppCompatActivity {
         Button enddate_btn = findViewById(R.id.btn_setEndDate);
         Button starttime_btn = findViewById(R.id.btn_setStartTime);
         Button endtime_btn = findViewById(R.id.btn_setEndTime);
-        Button submit_btn = findViewById(R.id.btn_goSubmit);
+        Button submit_btn = findViewById(R.id.btn_outSubmit);
         final EditText reason_et = findViewById(R.id.et_reason);
+
 
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog S_Ddialog = new DatePickerDialog(this, sdateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
@@ -112,7 +115,8 @@ public class OutActivity extends AppCompatActivity {
                     out.setReason(REASON_TO_OUT);
 
                     mRTService = APIUtills.getAPIService();
-                    mResponse = mRTService.
+                    mResponse = mRTService.goOutPost(out, USER_TOKEN);
+
                 }
             }
         });
