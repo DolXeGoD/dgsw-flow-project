@@ -59,6 +59,7 @@ public class OutActivity extends AppCompatActivity {
         CheckBox isSleep = findViewById(R.id.isSleepOut);
         final EditText reason_et = findViewById(R.id.et_reason);
 
+        //유저 인증 토큰
         USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MSwiYXV0aCI6MiwiaWF0IjoxNTI2MjU2NTc3LCJleHAiOjE1MjY4NjEzNzcsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.k2komltlnHHar7fj6b7BJ7dmfxgxvrobx9awtr4MutY";
 
         final Calendar cal = Calendar.getInstance();
@@ -127,7 +128,7 @@ public class OutActivity extends AppCompatActivity {
                     out.setEnd_time(E_DATETIME);
                     out.setReason(REASON_TO_OUT);
 
-                    mRTService = APIUtills.getAPIService();
+                    mRTService = APIUtills.getAPIService(); //start of retrofit
                     if(isUserSleep == true){
                         mResponse = mRTService.sleepOutPost(out, USER_TOKEN);
                         mResponse.enqueue(new Callback<ResponseFormat>() {
