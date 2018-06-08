@@ -142,7 +142,7 @@ public class OutActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ResponseFormat> call, Throwable t) {
-
+                                Log.e(TAG, "GoOut Request Failed");
                             }
                         });
                     }
@@ -156,7 +156,7 @@ public class OutActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ResponseFormat> call, Throwable t) {
-
+                                Log.e(TAG, "SleepOut Request Failed");
                             }
                         });
                     }
