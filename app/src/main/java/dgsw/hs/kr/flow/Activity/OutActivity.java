@@ -129,14 +129,25 @@ public class OutActivity extends AppCompatActivity {
                     out.setReason(REASON_TO_OUT);
 
                     mRTService = APIUtills.getAPIService(); //start of retrofit
-                    if(isUserSleep == true){
-                        mResponse = mRTService.sleepOutPost(out, USER_TOKEN);
+                    if(isUserSleep == false){
+                        mResponse = mRTService.goOutPost(out, USER_TOKEN);
                         mResponse.enqueue(new Callback<ResponseFormat>() {
                             @Override
                             public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
                                 if(response.isSuccessful()){
                                     Log.i(TAG, "response msg : " + response.message().toString());
                                     Log.i(TAG, "response code : " + response.code());
+                                    Log.i(TAG, "server msg : " + response.body().getMessage());
+                                    Log.i(TAG, "server code : " + response.body().getStatus());
+                                    Log.i(TAG, "re-check ur goout starttime : " + response.body().getData().getGo_out().getStart_time());
+                                    Log.i(TAG, "re-check ur goout endtime : " + response.body().getData().getGo_out().getEnd_time());
+
+                                    if(response.body().getStatus() == 200){
+                                        System.out.println("성공");
+                                        Toast.makeText(getApplicationContext(),"외출 신청 성공.",Toast.LENGTH_LONG).show();
+                                    }else{
+                                        Toast.makeText(getApplicationContext(),"외출 신청 실패하였습니다.",Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             }
 
@@ -146,8 +157,8 @@ public class OutActivity extends AppCompatActivity {
                             }
                         });
                     }
-                    else if(isUserSleep == false){
-                        mResponse = mRTService.goOutPost(out, USER_TOKEN);
+                    else if(isUserSleep == true){
+                        mResponse = mRTService.sleepOutPost(out, USER_TOKEN);
                         mResponse.enqueue(new Callback<ResponseFormat>() {
                             @Override
                             public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
