@@ -60,7 +60,7 @@ public class OutActivity extends AppCompatActivity {
         final EditText reason_et = findViewById(R.id.et_reason);
 
         //유저 인증 토큰
-        USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MSwiYXV0aCI6MiwiaWF0IjoxNTI2MjU2NTc3LCJleHAiOjE1MjY4NjEzNzcsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.k2komltlnHHar7fj6b7BJ7dmfxgxvrobx9awtr4MutY";
+        USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MiwiYXV0aCI6MiwiaWF0IjoxNTI4Njc2MzQ0LCJleHAiOjE1MjkyODExNDQsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.qjRkfMSD5yIDSAjwFZDGaMjNOaSsCh4s7Bt9DXHDA70";
 
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog S_Ddialog = new DatePickerDialog(this, sdateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
@@ -68,11 +68,11 @@ public class OutActivity extends AppCompatActivity {
         final DatePickerDialog E_Ddialog = new DatePickerDialog(this, edateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
         final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, hour, minute, true);
 
-        if(isGo.isChecked() == true && isSleep.isChecked() == false){
+        /*if(isGo.isChecked() == true && isSleep.isChecked() == false){
             isUserSleep = false;
         } else{
             isUserSleep = true;
-        }
+        }*/
         //================================= OnClick Listener About DATE & TIME
         startdate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +119,8 @@ public class OutActivity extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                Toast.makeText(getApplicationContext(), "버튼 눌림.", Toast.LENGTH_SHORT).show();
+
                 REASON_TO_OUT = reason_et.getText().toString().trim();
                 Out out = new Out();
 
@@ -128,7 +130,40 @@ public class OutActivity extends AppCompatActivity {
                     out.setEnd_time(E_DATETIME);
                     out.setReason(REASON_TO_OUT);
 
-                    mRTService = APIUtills.getAPIService(); //start of retrofit
+                    Toast.makeText(getApplicationContext(), "레트로핏 시작.", Toast.LENGTH_SHORT).show();
+
+                    mRTService = APIUtills.getAPIService();
+                    mResponse = mRTService.goOutPost(out, USER_TOKEN);
+                    mResponse.enqueue(new Callback<ResponseFormat>() {
+                        @Override
+                        public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
+                            Toast.makeText(getApplicationContext(),"AAAAAAAAA.",Toast.LENGTH_LONG).show();
+                            Log.i(TAG, "response msg : " + response.message().toString());
+                            Log.i(TAG, "response code : " + response.code());
+
+                            Log.i(TAG, "server msg : " + response.body().getMessage());
+                            Log.i(TAG, "server code : " + response.body().getStatus());
+
+
+
+                            /*                            Log.i(TAG, "re-check ur goout starttime : " + response.body().getData().getGo_out().getStart_time());
+                            Log.i(TAG, "re-check ur goout endtime : " + response.body().getData().getGo_out().getEnd_time());*/
+
+                            if(response.body().getStatus() == 200){
+                                System.out.println("성공");
+                                Toast.makeText(getApplicationContext(),"외출 신청 성공.",Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(getApplicationContext(),"외출 신청 실패하였습니다.",Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseFormat> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(),"FFFFFFFFFFFFUUUUUUUUUUCCCCCCCCCC.",Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                 /*   mRTService = APIUtills.getAPIService(); //start of retrofit
                     if(isUserSleep == false){
                         mResponse = mRTService.goOutPost(out, USER_TOKEN);
                         mResponse.enqueue(new Callback<ResponseFormat>() {
@@ -150,7 +185,6 @@ public class OutActivity extends AppCompatActivity {
                                     }
                                 }
                             }
-
                             @Override
                             public void onFailure(Call<ResponseFormat> call, Throwable t) {
                                 Log.e(TAG, "GoOut Request Failed");
@@ -170,7 +204,7 @@ public class OutActivity extends AppCompatActivity {
                                 Log.e(TAG, "SleepOut Request Failed");
                             }
                         });
-                    }
+                    }*/
                 }
             }
         });
