@@ -14,7 +14,10 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import dgsw.hs.kr.flow.Model.request.Out;
 import dgsw.hs.kr.flow.Model.response.ResponseFormat;
@@ -73,6 +76,7 @@ public class OutActivity extends AppCompatActivity {
         } else{
             isUserSleep = true;
         }*/
+
         //================================= OnClick Listener About DATE & TIME
         startdate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +130,8 @@ public class OutActivity extends AppCompatActivity {
 
                 //모델 세팅 전 값 비었는지 검사.
                 if(S_DATETIME!=null&&E_DATETIME!=null&&!TextUtils.isEmpty(REASON_TO_OUT)){
+                    //SimpleDateFormat
+
                     out.setStart_time(S_DATETIME);
                     out.setEnd_time(E_DATETIME);
                     out.setReason(REASON_TO_OUT);
@@ -143,8 +149,6 @@ public class OutActivity extends AppCompatActivity {
 
                             Log.i(TAG, "server msg : " + response.body().getMessage());
                             Log.i(TAG, "server code : " + response.body().getStatus());
-
-
 
                             /*                            Log.i(TAG, "re-check ur goout starttime : " + response.body().getData().getGo_out().getStart_time());
                             Log.i(TAG, "re-check ur goout endtime : " + response.body().getData().getGo_out().getEnd_time());*/
@@ -231,7 +235,7 @@ public class OutActivity extends AppCompatActivity {
             minute = m;
             Toast.makeText(getApplicationContext(), hour + " 시" + minute +
                     " 분 입니다.", Toast.LENGTH_SHORT).show();
-            S_TIME = hour+":"+minute;
+            S_TIME = String.format("%02d:%02d", hour, minute);
             S_DATETIME = S_DATE+" "+S_TIME;
             System.out.println(S_DATETIME);
         }
@@ -256,7 +260,7 @@ public class OutActivity extends AppCompatActivity {
             minute = m;
             Toast.makeText(getApplicationContext(), hour + " 시" + minute +
                     " 분 입니다.", Toast.LENGTH_SHORT).show();
-            E_TIME = hour+":"+minute;
+            E_TIME = String.format("%02d:%02d", hour, minute);
             E_DATETIME = E_DATE+" "+E_TIME;
         }
     };
