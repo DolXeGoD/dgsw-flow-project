@@ -132,6 +132,9 @@ public class OutActivity extends AppCompatActivity {
                     out.setEnd_time(E_DATETIME);
                     out.setReason(REASON_TO_OUT);
 
+                    Log.i(TAG, "request msg : " + S_DATETIME);
+                    Log.i(TAG, "request msg : " + E_DATETIME);
+                    Log.i(TAG, "request msg : " + REASON_TO_OUT);
                     Toast.makeText(getApplicationContext(), "레트로핏 시작.", Toast.LENGTH_SHORT).show();
 
                     mRTService = APIUtills.getAPIService();
@@ -220,7 +223,8 @@ public class OutActivity extends AppCompatActivity {
             day = dayOfMonth;
             Toast.makeText(getApplicationContext(), year +
                     "년" + month + "월" + day+"일", Toast.LENGTH_SHORT).show();
-            S_DATE = year+"-"+month+"-"+day;
+
+            S_DATE = String.format("%04d-%02d-%02d", year, month , day);
         }
     };
 
@@ -245,7 +249,7 @@ public class OutActivity extends AppCompatActivity {
             day = dayOfMonth;
             Toast.makeText(getApplicationContext(), year +
                     "년" + month + "월" + day+"일", Toast.LENGTH_SHORT).show();
-            E_DATE = year+"-"+month+"-"+day;
+            E_DATE = String.format("%04d-%02d-%02d", year, month , day);
         }
     };
 
