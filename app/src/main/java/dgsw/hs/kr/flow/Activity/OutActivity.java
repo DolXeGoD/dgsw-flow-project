@@ -67,11 +67,11 @@ public class OutActivity extends AppCompatActivity {
         final DatePickerDialog E_Ddialog = new DatePickerDialog(this, edateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
         final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, hour, minute, true);
 
-        /*if(isGo.isChecked() == true && isSleep.isChecked() == false){
+        if(isGo.isChecked() == true && isSleep.isChecked() == false){
             isUserSleep = false;
-        } else{
+        } else if(isGo.isChecked() == false && isSleep.isChecked() == true){
             isUserSleep = true;
-        }*/
+        }
 
         //================================= OnClick Listener About DATE & TIME
         startdate_btn.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +137,7 @@ public class OutActivity extends AppCompatActivity {
                     Log.i(TAG, "request msg : " + REASON_TO_OUT);
                     Toast.makeText(getApplicationContext(), "레트로핏 시작.", Toast.LENGTH_SHORT).show();
 
-                    mRTService = APIUtills.getAPIService();
+                   /* mRTService = APIUtills.getAPIService();
                     mResponse = mRTService.goOutPost(out, USER_TOKEN);
                     mResponse.enqueue(new Callback<ResponseFormat>() {
                         @Override
@@ -148,9 +148,6 @@ public class OutActivity extends AppCompatActivity {
 
                             Log.i(TAG, "server msg : " + response.body().getMessage());
                             Log.i(TAG, "server code : " + response.body().getStatus());
-
-                            /*                            Log.i(TAG, "re-check ur goout starttime : " + response.body().getData().getGo_out().getStart_time());
-                            Log.i(TAG, "re-check ur goout endtime : " + response.body().getData().getGo_out().getEnd_time());*/
 
                             if(response.body().getStatus() == 200){
                                 System.out.println("성공");
@@ -164,9 +161,9 @@ public class OutActivity extends AppCompatActivity {
                         public void onFailure(Call<ResponseFormat> call, Throwable t) {
                             Toast.makeText(getApplicationContext(),"FFFFFFFFFFFFUUUUUUUUUUCCCCCCCCCC.",Toast.LENGTH_LONG).show();
                         }
-                    });
+                    });*/
 
-                 /*   mRTService = APIUtills.getAPIService(); //start of retrofit
+                    mRTService = APIUtills.getAPIService(); //start of retrofit
                     if(isUserSleep == false){
                         mResponse = mRTService.goOutPost(out, USER_TOKEN);
                         mResponse.enqueue(new Callback<ResponseFormat>() {
@@ -177,11 +174,11 @@ public class OutActivity extends AppCompatActivity {
                                     Log.i(TAG, "response code : " + response.code());
                                     Log.i(TAG, "server msg : " + response.body().getMessage());
                                     Log.i(TAG, "server code : " + response.body().getStatus());
-                                    Log.i(TAG, "re-check ur goout starttime : " + response.body().getData().getGo_out().getStart_time());
-                                    Log.i(TAG, "re-check ur goout endtime : " + response.body().getData().getGo_out().getEnd_time());
+                                    /*Log.i(TAG, "re-check ur goout starttime : " + response.body().getData().getGo_out().getStart_time());
+                                    Log.i(TAG, "re-check ur goout endtime : " + response.body().getData().getGo_out().getEnd_time());*/
 
                                     if(response.body().getStatus() == 200){
-                                        System.out.println("성공");
+                                        System.out.println("외출 신청 성공");
                                         Toast.makeText(getApplicationContext(),"외출 신청 성공.",Toast.LENGTH_LONG).show();
                                     }else{
                                         Toast.makeText(getApplicationContext(),"외출 신청 실패하였습니다.",Toast.LENGTH_LONG).show();
@@ -199,15 +196,15 @@ public class OutActivity extends AppCompatActivity {
                         mResponse.enqueue(new Callback<ResponseFormat>() {
                             @Override
                             public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
-
+                                Log.i(TAG, "외박신청 감지됨.");
                             }
 
                             @Override
                             public void onFailure(Call<ResponseFormat> call, Throwable t) {
-                                Log.e(TAG, "SleepOut Request Failed");
+                                Log.e(TAG, "외박 신청 실패");
                             }
                         });
-                    }*/
+                    }
                 }
             }
         });
