@@ -54,8 +54,8 @@ public class OutActivity extends AppCompatActivity {
         Button starttime_btn = findViewById(R.id.btn_setStartTime);
         Button endtime_btn = findViewById(R.id.btn_setEndTime);
         Button submit_btn = findViewById(R.id.btn_outSubmit);
-        CheckBox isGo = findViewById(R.id.isGoOut);
-        CheckBox isSleep = findViewById(R.id.isSleepOut);
+        final CheckBox isGo = findViewById(R.id.isGoOut);
+        final CheckBox isSleep = findViewById(R.id.isSleepOut);
         final EditText reason_et = findViewById(R.id.et_reason);
 
         //유저 인증 토큰
@@ -67,11 +67,7 @@ public class OutActivity extends AppCompatActivity {
         final DatePickerDialog E_Ddialog = new DatePickerDialog(this, edateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
         final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, hour, minute, true);
 
-        if(isGo.isChecked() == true && isSleep.isChecked() == false){
-            isUserSleep = false;
-        } else if(isGo.isChecked() == false && isSleep.isChecked() == true){
-            isUserSleep = true;
-        }
+
 
         //================================= OnClick Listener About DATE & TIME
         startdate_btn.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +123,14 @@ public class OutActivity extends AppCompatActivity {
                 //모델 세팅 전 값 비었는지 검사.
                 if(S_DATETIME!=null&&E_DATETIME!=null&&!TextUtils.isEmpty(REASON_TO_OUT)){
                     //SimpleDateFormat
+
+                    //외출인지 외박인지 확인.
+
+                    if(isGo.isChecked() == true){
+                        isUserSleep = false;
+                    } else if(isSleep.isChecked() == true){
+                        isUserSleep = true;
+                    }
 
                     out.setStart_time(S_DATETIME);
                     out.setEnd_time(E_DATETIME);
