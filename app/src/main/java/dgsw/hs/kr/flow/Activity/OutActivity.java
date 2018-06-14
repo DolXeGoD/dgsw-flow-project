@@ -67,8 +67,6 @@ public class OutActivity extends AppCompatActivity {
         final DatePickerDialog E_Ddialog = new DatePickerDialog(this, edateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
         final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, hour, minute, true);
 
-
-
         //================================= OnClick Listener About DATE & TIME
         startdate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +123,6 @@ public class OutActivity extends AppCompatActivity {
                     //SimpleDateFormat
 
                     //외출인지 외박인지 확인.
-
                     if(isGo.isChecked() == true){
                         isUserSleep = false;
                     } else if(isSleep.isChecked() == true){
@@ -201,11 +198,16 @@ public class OutActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
                                 Log.i(TAG, "외박신청 감지됨.");
+                                Log.i(TAG, "response msg : " + response.message().toString());
+                                Log.i(TAG, "response code : " + response.code());
+                                Log.i(TAG, "server msg : " + response.body().getMessage());
+                                Log.i(TAG, "server code : " + response.body().getStatus());
                             }
 
                             @Override
                             public void onFailure(Call<ResponseFormat> call, Throwable t) {
                                 Log.e(TAG, "외박 신청 실패");
+                                Log.e(TAG, "GoOut Request Failed");
                             }
                         });
                     }
