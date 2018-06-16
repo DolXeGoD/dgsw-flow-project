@@ -15,6 +15,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import java.util.Calendar;
 
+import dgsw.hs.kr.flow.Database.DBManager;
 import dgsw.hs.kr.flow.Model.request.Out;
 import dgsw.hs.kr.flow.Model.response.ResponseFormat;
 import dgsw.hs.kr.flow.Network.RetrofitService;
@@ -57,9 +58,9 @@ public class OutActivity extends AppCompatActivity {
         final CheckBox isGo = findViewById(R.id.isGoOut);
         final CheckBox isSleep = findViewById(R.id.isSleepOut);
         final EditText reason_et = findViewById(R.id.et_reason);
-
+        final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
         //유저 인증 토큰
-        USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MiwiYXV0aCI6MiwiaWF0IjoxNTI4Njc2MzQ0LCJleHAiOjE1MjkyODExNDQsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.qjRkfMSD5yIDSAjwFZDGaMjNOaSsCh4s7Bt9DXHDA70";
+        USER_TOKEN = dbManager.select();
 
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog S_Ddialog = new DatePickerDialog(this, sdateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));

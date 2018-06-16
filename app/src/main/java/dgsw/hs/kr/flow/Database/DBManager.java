@@ -42,6 +42,11 @@ public class DBManager extends SQLiteOpenHelper{
         String query = "SELECT * FROM t_token";
         Cursor cursor = null;
 
+
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+
         cursor = db.rawQuery(query, null);
 
         if(cursor.moveToNext()){

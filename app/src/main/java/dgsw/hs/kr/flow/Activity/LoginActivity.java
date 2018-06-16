@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.i(TAG, "USER TOKEN : " + response.body().getData().getToken());
                                     //DB에 유저 토큰 저장.
                                     dbManager.insert(userToken);
+                                    Toast.makeText(getApplicationContext(),"토큰을 저장하였습니다.",Toast.LENGTH_LONG).show();
                                     //db 조회해서 토큰 값 있는지 확인
                                     dbManager.select();
                                 } else{ //로그인 실패 시
