@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context="dgsw.hs.kr.flow.Activity.DBManagerTestActivity">
 
+    <Button
+        android:id="@+id/btn_dbselect"
+        android:layout_width="346dp"
+        android:layout_height="wrap_content"
+        android:text="SELECT TOKEN"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="44dp" />
+
+    <TextView
+        android:id="@+id/tv_resultOfSelect"
+        android:layout_width="346dp"
+        android:layout_height="50dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="143dp" />
 </android.support.constraint.ConstraintLayout>

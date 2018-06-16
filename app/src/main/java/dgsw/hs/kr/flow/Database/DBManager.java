@@ -52,9 +52,8 @@ public class DBManager extends SQLiteOpenHelper{
         if(cursor.moveToNext()){
             testIdx = cursor.getInt(0);
             testToken = cursor.getString(1);
+            Log.i("this is token log", testIdx + " | " + testToken);
         }
-
-        Log.i("this is token log", testIdx + " | " + testToken);
 
         return testToken;
     }
