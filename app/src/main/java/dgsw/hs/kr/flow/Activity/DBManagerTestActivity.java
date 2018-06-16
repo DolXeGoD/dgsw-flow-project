@@ -10,16 +10,15 @@ import dgsw.hs.kr.flow.Database.DBManager;
 import dgsw.hs.kr.flow.R;
 
 public class DBManagerTestActivity extends AppCompatActivity {
-
-    final Button btn_select = findViewById(R.id.btn_dbselect);
-    final TextView resultTv = findViewById(R.id.tv_resultOfSelect);
-    final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
     private String shit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dbmanager_test);
+        final Button btn_select = findViewById(R.id.btn_dbselect);
+        final TextView resultTv = findViewById(R.id.tv_resultOfSelect);
+        final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
         resultTv.setText("thistextisnotincludeanymeans");
 
         btn_select.setOnClickListener(new View.OnClickListener(){
