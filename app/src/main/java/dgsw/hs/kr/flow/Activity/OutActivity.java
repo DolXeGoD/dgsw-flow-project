@@ -177,6 +177,7 @@ public class OutActivity extends AppCompatActivity {
                             public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
                                 // 네트워크 요청이 성공했을 시. (code number is 200~300)
                                 if(response.isSuccessful()){
+                                    Toast.makeText(getApplicationContext(), "외출 신청입니다.", Toast.LENGTH_LONG).show(); //DEBUG
                                     Log.i(TAG, "response msg : " + response.message().toString());
                                     Log.i(TAG, "response code : " + response.code());
                                     // 서버로 요청 성공했을 시. success to get body status
@@ -198,6 +199,7 @@ public class OutActivity extends AppCompatActivity {
                             }
                             @Override
                             public void onFailure(Call<ResponseFormat> call, Throwable t) {
+                                Log.e(TAG, "외박 신청 실패 - 레트로핏 onFailure 걸림.");
                                 Log.e(TAG, "GoOut Request Failed");
                             }
                         });
@@ -207,16 +209,32 @@ public class OutActivity extends AppCompatActivity {
                         mResponse.enqueue(new Callback<ResponseFormat>() {
                             @Override
                             public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
-                                Log.i(TAG, "외박신청 감지됨.");
-                                Log.i(TAG, "response msg : " + response.message().toString());
-                                Log.i(TAG, "response code : " + response.code());
-                                Log.i(TAG, "server msg : " + response.body().getMessage());
-                                Log.i(TAG, "server code : " + response.body().getStatus());
+                                // 네트워크 요청이 성공했을 시. (code number is 200~300)
+                                if(response.isSuccessful()){
+                                    Toast.makeText(getApplicationContext(), "외박 신청입니다.", Toast.LENGTH_LONG).show(); //DEBUG
+                                    Log.i(TAG, "response msg : " + response.message().toString());
+                                    Log.i(TAG, "response code : " + response.code());
+                                    // 서버로 요청 성공했을 시. success to get body status
+                                    if(response.body() != null){
+                                        Log.i(TAG, "server msg : " + response.body().getMessage());
+                                        Log.i(TAG, "server code : " + response.body().getStatus());
+                                        //서버가 정상적이고, 요청도 성공하여 body의 data를 성공적으로 response 받았을 때. body status is 200
+                                        if(response.body().getData() != null && response.body().getStatus() == 200) {
+                                            Toast.makeText(getApplicationContext(),"외박 신청 성공.",Toast.LENGTH_LONG).show();
+                                            Log.i(TAG, "re-check ur goout starttime : " + response.body().getData().getSleep_out().getStart_time());
+                                            Log.i(TAG, "re-check ur goout endtime : " + response.body().getData().getSleep_out().getEnd_time());
+                                        } else{
+                                            Log.i(TAG, "server is well response, but failed to get data.. Check the error code. ");
+                                        }
+                                    } else{
+                                        Log.e(TAG, "Failed to get response body. SERVER ERR");
+                                    }
+                                }
                             }
 
                             @Override
                             public void onFailure(Call<ResponseFormat> call, Throwable t) {
-                                Log.e(TAG, "외박 신청 실패");
+                                Log.e(TAG, "외박 신청 실패 - 레트로핏 onFailure 걸림.");
                                 Log.e(TAG, "GoOut Request Failed");
                             }
                         });
@@ -277,6 +295,5 @@ public class OutActivity extends AppCompatActivity {
             E_DATETIME = E_DATE+" "+E_TIME;
         }
     };
-
 
 }
