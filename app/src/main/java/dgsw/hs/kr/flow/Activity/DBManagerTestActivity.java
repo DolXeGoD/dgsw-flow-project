@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import dgsw.hs.kr.flow.Database.DBManager;
@@ -21,6 +22,8 @@ public class DBManagerTestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dbmanager_test);
         final Button btn_select = findViewById(R.id.btn_dbselect);
         final Button btn_insert = findViewById(R.id.btn_insertTest);
+        final Button btn_test = findViewById(R.id.btn_selecttest);
+        final ListView resulttestLv = findViewById(R.id.lv_resultdb);
         final TextView resultTv = findViewById(R.id.tv_resultOfSelect);
         final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
         resultTv.setText("thistextisnotincludeanymeans");
