@@ -2,10 +2,8 @@ package dgsw.hs.kr.flow.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import dgsw.hs.kr.flow.Database.DBManager;
@@ -13,7 +11,7 @@ import dgsw.hs.kr.flow.R;
 
 public class DBManagerTestActivity extends AppCompatActivity {
     private String shit;
-    private String test = "hello, token!";
+    private String test = "tokentest2";
     private static final String TAG = "DBTestActivity";
 
     @Override
@@ -39,8 +37,6 @@ public class DBManagerTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dbManager.insert(test);
-                shit = dbManager.select();
-                resultTv.setText(shit);
             }
         });
 

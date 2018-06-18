@@ -14,6 +14,7 @@ public class DBManager extends SQLiteOpenHelper{
 
     public int testIdx;
     public String testToken;
+    public int count;
     public DBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -30,14 +31,38 @@ public class DBManager extends SQLiteOpenHelper{
 
     }
 
-    public void insert(String token){
+    public int insert(String token){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO t_token(token) VALUES('" + token +"')");
+        String query = "SELECT * FROM t_token";
+        int checkCtn = 0;
+
+        Cursor cursor = null;
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+
+        cursor = db.rawQuery(query, null);
+        count = cursor.getCount();
+        loop: for(int i=0;i<count;i++){
+            cursor.moveToNext();
+            String reduCheck = cursor.getString(1);
+            //같은 토큰 값이 존재하면.
+            if(token.equals(reduCheck) == true){
+                Log.i("err", "같은 토큰 값이 이미 DB에 존재합니다.");
+                break loop; // for문 탈출 후 함수 종료
+            }
+            checkCtn++; //중복된 값이 없으묜 checkCtn를 계속 증가.
+        }
+        //중복된 토큰 값 없이 모두 통과하면 insert 실행.
+        if(checkCtn == count){
+            db.execSQL("INSERT INTO t_token(token) VALUES('" + token +"') ");
+        }
+        return 0;
     }
 
     public void delete(){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM t_token WHERE idx > 3");
+        db.execSQL("DELETE FROM t_token WHERE idx > 1");
     }
 
     public String select(){
@@ -52,7 +77,7 @@ public class DBManager extends SQLiteOpenHelper{
         }
 
         cursor = db.rawQuery(query, null);
-        int count = cursor.getCount();
+        count = cursor.getCount();
 
         for(int i = 0; i<count; i++){
             cursor.moveToNext();
