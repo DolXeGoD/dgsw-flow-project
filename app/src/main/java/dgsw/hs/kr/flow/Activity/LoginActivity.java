@@ -90,6 +90,10 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),"토큰을 저장하였습니다.",Toast.LENGTH_LONG).show();
                                     //db 조회해서 토큰 값 있는지 확인
                                     dbManager.select();
+
+                                    //메인으로 이동.
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
                                 } else{ //로그인 실패 시
                                     Toast.makeText(getApplicationContext(),"입력 양식이나 아이디, 비밀번호가 일치하지 않습니다.",Toast.LENGTH_LONG).show();
                                 }
