@@ -54,7 +54,8 @@ public class DBManager extends SQLiteOpenHelper{
         cursor = db.rawQuery(query, null);
         int count = cursor.getCount();
 
-        if(cursor.moveToNext()){
+        for(int i = 0; i<count; i++){
+            cursor.moveToNext();
             testIdx = cursor.getInt(0);
             testToken = cursor.getString(1);
             Log.i("this is token log", testIdx + " | " + testToken);
