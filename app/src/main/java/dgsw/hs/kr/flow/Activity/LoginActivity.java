@@ -1,5 +1,6 @@
 package dgsw.hs.kr.flow.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import dgsw.hs.kr.flow.Database.DBManager;
@@ -36,9 +38,19 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
-        final EditText emailEt = findViewById(R.id.login_et_email);
-        final EditText pwEt = findViewById(R.id.login_et_pw);
-        Button loginBtn = findViewById(R.id.btn_login);
+        final EditText emailEt = findViewById(R.id.et_login_email);
+        final EditText pwEt = findViewById(R.id.et_login_pw);
+        final Button loginBtn = findViewById(R.id.btn_login);
+        final TextView gotoRegisterTv = findViewById(R.id.tv_goto_register);
+
+        //회원가입하기 버튼 눌렀을 때 -> 회원가입 액티비티로 이동
+        gotoRegisterTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //LOGIN 버튼 클릭 시
         loginBtn.setOnClickListener(new View.OnClickListener() {

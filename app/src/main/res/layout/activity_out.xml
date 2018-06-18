@@ -102,7 +102,7 @@
         android:text="외출 사유"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/login_et_pw" />
+        app:layout_constraintStart_toStartOf="@+id/et_login_pw" />
 
     <CheckBox
         android:id="@+id/isGoOut"

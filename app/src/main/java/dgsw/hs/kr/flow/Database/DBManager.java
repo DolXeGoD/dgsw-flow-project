@@ -60,6 +60,7 @@ public class DBManager extends SQLiteOpenHelper{
         return 0;
     }
 
+    //디버깅용 delete 함수. insert 테스트를 위해 idx 2부터 모든 데이터를 없앰.
     public void delete(){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM t_token WHERE idx > 1");
