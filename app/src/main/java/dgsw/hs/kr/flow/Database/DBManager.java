@@ -14,7 +14,6 @@ public class DBManager extends SQLiteOpenHelper{
 
     public int testIdx;
     public String testToken;
-
     public DBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -34,6 +33,11 @@ public class DBManager extends SQLiteOpenHelper{
     public void insert(String token){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("INSERT INTO t_token(token) VALUES('" + token +"')");
+    }
+
+    public void delete(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM t_token WHERE idx > 3");
     }
 
     public String select(){
@@ -56,7 +60,7 @@ public class DBManager extends SQLiteOpenHelper{
             Log.i("this is token log", testIdx + " | " + testToken);
         }
 
-        Log.i("this is token COUNT", "DB COUNT RESULT : "+ count);
+        Log.i("THIS IS JUST TEST AND ", "DB COUNT RESULT : "+ count);
 
         return testToken;
     }

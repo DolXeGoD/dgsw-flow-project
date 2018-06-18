@@ -22,8 +22,7 @@ public class DBManagerTestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dbmanager_test);
         final Button btn_select = findViewById(R.id.btn_dbselect);
         final Button btn_insert = findViewById(R.id.btn_insertTest);
-        final Button btn_test = findViewById(R.id.btn_selecttest);
-        final ListView resulttestLv = findViewById(R.id.lv_resultdb);
+        final Button btn_delete = findViewById(R.id.btn_delete);
         final TextView resultTv = findViewById(R.id.tv_resultOfSelect);
         final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
         resultTv.setText("thistextisnotincludeanymeans");
@@ -40,9 +39,15 @@ public class DBManagerTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dbManager.insert(test);
-                Log.i(TAG, "");
                 shit = dbManager.select();
                 resultTv.setText(shit);
+            }
+        });
+
+        btn_delete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                dbManager.delete();
             }
         });
     }
