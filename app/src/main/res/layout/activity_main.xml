@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <Button
-        android:id="@+id/nextMealBtn"
+        android:id="@+id/btn_next_meal"
         android:layout_width="262dp"
         android:layout_height="55dp"
         android:layout_marginEnd="75dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_main_title1" />
 
     <Button
-        android:id="@+id/choiceMealBtn"
+        android:id="@+id/btn_choice_meal"
         android:layout_width="262dp"
         android:layout_height="55dp"
         android:layout_marginEnd="75dp"
@@ -36,7 +36,7 @@
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nextMealBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_next_meal" />
 
     <TextView
         android:id="@+id/tv_main_title1"
@@ -49,6 +49,68 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="161dp"
         tools:layout_editor_absoluteY="36dp" />
+
+    <TextView
+        android:id="@+id/tv_main_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="133dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:text="외출 / 외박"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_choice_meal" />
+
+    <Button
+        android:id="@+id/btn_request_out"
+        android:layout_width="262dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/colorAccent"
+        android:text="외출 / 외박 신청하기"
+        android:textColor="@android:color/white"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_title2" />
+
+    <TextView
+        android:id="@+id/tv_main_title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="136dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="41dp"
+        android:fontFamily="sans-serif"
+        android:text="공 지 사 항"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_request_out" />
+
+    <Button
+        android:id="@+id/btn_get_notice"
+        android:layout_width="262dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="13dp"
+        android:background="@color/colorAccent"
+        android:text="공지사항 확인하기"
+        android:textColor="@android:color/white"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_title3" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog dialog = new DatePickerDialog(this, listener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
 
-        nextMealBtn = findViewById(R.id.nextMealBtn);
-        choiceMealBtn = findViewById(R.id.choiceMealBtn);
+        nextMealBtn = findViewById(R.id.btn_next_meal);
+        choiceMealBtn = findViewById(R.id.btn_choice_meal);
 
         //다음 급식 버튼 리스너
         nextMealBtn.setOnClickListener(new View.OnClickListener() {
