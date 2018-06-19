@@ -60,7 +60,7 @@ public class OutActivity extends AppCompatActivity {
         final EditText reason_et = findViewById(R.id.et_reason);
         final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
         //유저 인증 토큰
-        USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MSwiYXV0aCI6MiwiaWF0IjoxNTI2MjU2NTc3LCJleHAiOjE1MjY4NjEzNzcsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.k2komltlnHHar7fj6b7BJ7dmfxgxvrobx9awtr4MutY";
+        USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MiwiYXV0aCI6MiwiaWF0IjoxNTI5MzcwNTYxLCJleHAiOjE1Mjk5NzUzNjEsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.k-R39u26IjDFCQumuYFEmP9_ZMT7m27NJ3QLnhDCRHs";
 
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog S_Ddialog = new DatePickerDialog(this, sdateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));

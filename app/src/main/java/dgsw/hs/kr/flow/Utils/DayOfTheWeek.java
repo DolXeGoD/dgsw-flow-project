@@ -15,8 +15,8 @@ public class DayOfTheWeek {
         Calendar cal= Calendar.getInstance ();
 
         cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month);
-        cal.set(Calendar.DATE, day);
+        cal.set(Calendar.MONTH, month-1);
+        cal.set(Calendar.DATE, day+1);
 
         switch (cal.get(Calendar.DAY_OF_WEEK)){
             case 1:

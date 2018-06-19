@@ -123,7 +123,7 @@
         android:text="2018년 00월 00일 (월)"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="21dp"
+        android:textSize="27dp"
         app:layout_constraintBottom_toTopOf="@+id/tabHost1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
