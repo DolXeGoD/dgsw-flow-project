@@ -13,17 +13,23 @@ import java.util.Calendar;
 
 import dgsw.hs.kr.flow.Model.MealTime;
 import dgsw.hs.kr.flow.R;
+import dgsw.hs.kr.flow.Utils.DayOfTheWeek;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button nextMealBtn;
     private Button choiceMealBtn;
+    private Button requestOutBtn;
+    private Button getNoticeBtn;
 
     private int year;
     private int month;
     private int day;
     private int hour;
     private int minute;
+    private String date;
+    private String dayOfTheWeek;
+    private String dateForExtra;
 
     public static MealTime mt = new MealTime();
 
@@ -38,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         nextMealBtn = findViewById(R.id.btn_next_meal);
         choiceMealBtn = findViewById(R.id.btn_choice_meal);
+        requestOutBtn = findViewById(R.id.btn_request_out);
+        getNoticeBtn = findViewById(R.id.btn_get_notice);
 
-        //다음 급식 버튼 리스너
+        //다음 급식 조회 버튼 리스너 -> MealActivity로 이동
         nextMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 year = cal.get(Calendar.YEAR);
                 month = cal.get(Calendar.MONTH) + 1;
                 day = cal.get(Calendar.DATE) - 1;
-
                 hour = cal.get(Calendar.HOUR_OF_DAY);
                 minute =  cal.get(Calendar.MINUTE);
 
@@ -58,22 +65,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //급식 선택하기 버튼 리스너
+        //원하는 날짜의 급식 조회 버튼 리스너
         choiceMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.show();
             }
         });
+
+        //외출/외박 신청 버튼 리스너.
+        requestOutBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, OutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
+    //원하는 날짜 선택 후 -> MealActivity로 이동
     private DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
-
         @Override
-
         public void onDateSet(DatePicker view, int thisYear, int monthOfYear, int dayOfMonth) {
-            /*Toast.makeText(getApplicationContext(), thisYear + "년" + monthOfYear + "월" + dayOfMonth +"일", Toast.LENGTH_SHORT).show();*/
-
+            DayOfTheWeek dotw = new DayOfTheWeek();
             // DEFAULT : 아침
             year = thisYear;
             month = monthOfYear + 1;
@@ -85,13 +99,14 @@ public class MainActivity extends AppCompatActivity {
                     "년" + month + "월" + day+"일" + hour + "시" + minute + "분", Toast.LENGTH_SHORT).show();
 
             mt.setDate(year, month, day, hour, minute);
-            Intent mealIntent = new Intent(MainActivity.this, MealActivity.class);
+            date = year + "년 " + month + "월 " + day + "일 ";
+
+            Intent mealIntent = new Intent(getApplicationContext(), MealActivity.class);
+            dayOfTheWeek = dotw.GetDay(year, month, day);
+            dateForExtra = year+"년 "+month+"월 "+(day+1)+"일 ("+dayOfTheWeek+")";
+            mealIntent.putExtra("STRING_DATE", dateForExtra);
             startActivity(mealIntent);
         }
     };
-
-
-
-
 
 }
