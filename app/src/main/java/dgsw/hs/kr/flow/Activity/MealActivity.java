@@ -1,7 +1,9 @@
 package dgsw.hs.kr.flow.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -18,17 +20,28 @@ public class MealActivity extends AppCompatActivity {
     private int year;
     private int month;
     private int day;
-
     private int mealTime;
+    private String date;
 
     private TextView morning_txt;
     private TextView lunch_txt;
     private TextView dinner_txt;
+    private TextView date_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal);
+        /* =========== getExtras로 MainActivity에서 넘어온 날짜 데이터 세팅 =========== */
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if(extras!=null){
+            date = (String)extras.get("STRING_DATE");
+            Log.i("test getExtras", "date value : "+date);
+        } else{
+            Log.i("test getExtras", "CAN'T GET DATE");
+        }
+
         setMeal();
         setLayout();
     }
@@ -51,7 +64,11 @@ public class MealActivity extends AppCompatActivity {
         morning_txt = findViewById(R.id.morning_txt);
         lunch_txt = findViewById(R.id.lunch_txt);
         dinner_txt = findViewById(R.id.dinner_txt);
+        date_txt = findViewById(R.id.tv_date_view);
 
+        date_txt.setText(date);
+
+        /* ==================== TabHost 관련 ==================== */
         TabHost tabHost1 = findViewById(R.id.tabHost1) ;
         tabHost1.setup() ;
 

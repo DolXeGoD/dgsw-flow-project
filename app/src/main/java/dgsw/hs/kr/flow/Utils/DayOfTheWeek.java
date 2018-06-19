@@ -9,7 +9,7 @@ import java.util.Calendar;
  */
 
 public class DayOfTheWeek {
-    private String returnDate = "";
+    private String returnDate;
     public String GetDay(int year, int month, int day){
 
         Calendar cal= Calendar.getInstance ();
