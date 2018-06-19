@@ -51,16 +51,18 @@ public class MainActivity extends AppCompatActivity {
         nextMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DayOfTheWeek dotw = new DayOfTheWeek();
                 Calendar cal = Calendar.getInstance();
                 year = cal.get(Calendar.YEAR);
                 month = cal.get(Calendar.MONTH) + 1;
                 day = cal.get(Calendar.DATE) - 1;
                 hour = cal.get(Calendar.HOUR_OF_DAY);
                 minute =  cal.get(Calendar.MINUTE);
-
                 mt.setDate(year, month, day, hour, minute);
-
                 Intent mealIntent = new Intent(MainActivity.this, MealActivity.class);
+                dayOfTheWeek = dotw.GetDay(year, month, day);
+                dateForExtra = year+"년 "+month+"월 "+(day+1)+"일 ("+dayOfTheWeek+")";
+                mealIntent.putExtra("STRING_DATE", dateForExtra);
                 startActivity(mealIntent);
             }
         });
