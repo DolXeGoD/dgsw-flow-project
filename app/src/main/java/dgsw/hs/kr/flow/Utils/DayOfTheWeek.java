@@ -20,25 +20,25 @@ public class DayOfTheWeek {
 
         switch (cal.get(Calendar.DAY_OF_WEEK)){
             case 1:
-                returnDate = "일요일";
+                returnDate = "일";
                 break;
             case 2:
-                returnDate = "월요일";
+                returnDate = "월";
                 break;
             case 3:
-                returnDate = "화요일";
+                returnDate = "화";
                 break;
             case 4:
-                returnDate = "수요일";
+                returnDate = "수";
                 break;
             case 5:
-                returnDate = "목요일";
+                returnDate = "목";
                 break;
             case 6:
-                returnDate = "금요일";
+                returnDate = "금";
                 break;
             case 7:
-                returnDate = "토요일";
+                returnDate = "토";
                 break;
         }
         return returnDate;
