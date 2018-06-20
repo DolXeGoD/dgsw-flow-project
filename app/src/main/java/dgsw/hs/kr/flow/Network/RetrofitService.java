@@ -6,6 +6,7 @@ import dgsw.hs.kr.flow.Model.request.Register;
 import dgsw.hs.kr.flow.Model.response.ResponseFormat;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
@@ -26,5 +27,6 @@ public interface RetrofitService {
     @POST("out/sleep")
     Call<ResponseFormat> sleepOutPost(@Body Out out, @Header("x-access-token") String token);
 
-
+    @GET("notice")
+    Call<ResponseFormat> noticeGet(@Header("x-access-token") String token);
 }
