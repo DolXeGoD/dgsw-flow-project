@@ -10,10 +10,10 @@ public class ResponseFormatData {
     private String token;
     private GoOutResponseFormat go_out;
     private SleepOutResponseFormat sleep_out;
-    private List<NoticeResponseFormat> list;
+    private NoticeResponseFormat[] list;
 
-    public List<NoticeResponseFormat> getList() {return list;}
-    public void setList(List<NoticeResponseFormat> list) {this.list = list;}
+    public NoticeResponseFormat[] getList() {return list;}
+    public void setList(NoticeResponseFormat[] list) {this.list = list;}
 
     public GoOutResponseFormat getGo_out() {return go_out;}
     public void setGo_out(GoOutResponseFormat go_out) {

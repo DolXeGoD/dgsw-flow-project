@@ -83,8 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                                 // 로그인 성공 시
                                 if(response.body().getStatus() == 200){
                                     Toast.makeText(getApplicationContext(),"로그인 성공 !!!",Toast.LENGTH_LONG).show();
-                                    userToken = response.body().getData().getToken();
-                                    Log.i(TAG, "USER TOKEN : " + response.body().getData().getToken());
+                                    userToken = response.body().getResponseFormatData().getToken();
+                                    Log.i(TAG, "USER TOKEN : " + response.body().getResponseFormatData().getToken());
                                     //DB에 유저 토큰 저장.
                                     dbManager.insert(userToken);
                                     Toast.makeText(getApplicationContext(),"토큰을 저장하였습니다.",Toast.LENGTH_LONG).show();
