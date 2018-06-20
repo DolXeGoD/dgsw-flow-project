@@ -12,6 +12,9 @@ public class ResponseFormatData {
     private SleepOutResponseFormat sleep_out;
     private List<NoticeResponseFormat> list;
 
+    public List<NoticeResponseFormat> getList() {return list;}
+    public void setList(List<NoticeResponseFormat> list) {this.list = list;}
+
     public GoOutResponseFormat getGo_out() {return go_out;}
     public void setGo_out(GoOutResponseFormat go_out) {
         this.go_out = go_out;
