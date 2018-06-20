@@ -1,5 +1,7 @@
 package dgsw.hs.kr.flow.Model.response;
 
+import java.util.List;
+
 /**
  * Created by 조현재 on 2018-05-14.
  */
@@ -8,6 +10,7 @@ public class Data {
     private String token;
     private GoOut go_out;
     private SleepOut sleep_out;
+    private List<NoticeResponseFormat> list;
 
     public GoOut getGo_out() {return go_out;}
     public void setGo_out(GoOut go_out) {
