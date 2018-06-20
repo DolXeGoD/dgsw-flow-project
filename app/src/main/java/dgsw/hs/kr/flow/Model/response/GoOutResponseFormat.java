@@ -6,7 +6,7 @@ import java.sql.Date;
  * Created by 조현재 on 2018-05-14.
  */
 //responseformat - data -goout
-public class GoOut {
+public class GoOutResponseFormat {
     private int idx;
     private String start_time;
     private String end_time;

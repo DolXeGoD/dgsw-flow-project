@@ -7,7 +7,7 @@ package dgsw.hs.kr.flow.Model.response;
 public class ResponseFormat {
     private int status;
     private String message;
-    private Data data;
+    private ResponseFormatData responseFormatData;
 
     public int getStatus() {
         return status;
@@ -25,7 +25,7 @@ public class ResponseFormat {
         this.message = message;
     }
 
-    public Data getData() { return data; }
+    public ResponseFormatData getResponseFormatData() { return responseFormatData; }
 
-    public void setData(Data data) { this.data = data; }
+    public void setResponseFormatData(ResponseFormatData responseFormatData) { this.responseFormatData = responseFormatData; }
 }

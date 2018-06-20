@@ -5,7 +5,7 @@ package dgsw.hs.kr.flow.Model.response;
  */
 
 //responseformat - data - sleepout
-public class SleepOut {
+public class SleepOutResponseFormat {
     private int idx;
     private String start_time;
     private String end_time;
