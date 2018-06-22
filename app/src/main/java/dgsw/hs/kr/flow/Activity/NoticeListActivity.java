@@ -3,9 +3,7 @@ package dgsw.hs.kr.flow.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -48,16 +46,14 @@ public class NoticeListActivity extends AppCompatActivity {
                     Log.i(TAG, "server code : " + response.body().getStatus());
                     if(response.body().getStatus() == 200){
                         NOTICE_COUNT = response.body().getResponseFormatData().getList().length;
-
-                        for(int i=0; i < 10;i++) {
+                        for(int i=0; i < 10;i++) { //최근 공지 10개
                             result_data = response.body().getResponseFormatData().getList()[i].getContent();
                             Log.i(TAG, "CONTENT OF NOTICE : " + response.body().getResponseFormatData().getList()[i].getContent());
                             Log.i(TAG, "NOTICE COUNT VALUE : " + NOTICE_COUNT);
-
                             NoticeListItem noticeListItem = new NoticeListItem(result_data);
                             data.add(noticeListItem);
+                            lv_notice.setAdapter(adapter);
                         }
-                        lv_notice.setAdapter(adapter);
                     }
                 }
             }
@@ -116,5 +112,7 @@ public class NoticeListActivity extends AppCompatActivity {
                 });
             }
         });*/
+
+        /* ======================================================================= */
     }
 }
