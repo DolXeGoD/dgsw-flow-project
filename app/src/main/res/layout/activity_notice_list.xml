@@ -31,10 +31,24 @@
         android:id="@+id/lv_notice_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="19dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_notice_footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_login_title" />
+
+    <TextView
+        android:id="@+id/tv_notice_footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:text="공지는 최근 10개 까지 조회됩니다."
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_notice_list" />
 
 </android.support.constraint.ConstraintLayout>
