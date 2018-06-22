@@ -5,47 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="dgsw.hs.kr.flow.Activity.NoticeListActivity">
+    tools:context="dgsw.hs.kr.flow.Activity.NoticeListActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/tv_login_title"
-        android:layout_width="428dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="1dp"
         android:fontFamily="monospace"
         android:text="공 지 사 항"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="40dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_get_notice"
+        app:layout_constraintBottom_toTopOf="@+id/lv_notice_list"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_get_notice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginStart="25dp"
-        android:text="Get Notice"
-        app:layout_constraintBottom_toTopOf="@+id/tv_result_notice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_title" />
-
-    <TextView
-        android:id="@+id/tv_result_notice"
+    <ListView
+        android:id="@+id/lv_notice_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="116dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:text="TextView"
+        android:layout_marginBottom="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_get_notice" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_title" />
 
 </android.support.constraint.ConstraintLayout>
