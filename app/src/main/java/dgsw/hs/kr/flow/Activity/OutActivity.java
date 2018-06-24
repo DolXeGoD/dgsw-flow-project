@@ -64,9 +64,9 @@ public class OutActivity extends AppCompatActivity {
 
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog S_Ddialog = new DatePickerDialog(this, sdateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        final TimePickerDialog S_Tdialog = new TimePickerDialog(this, stimeListener, hour, minute, true);
+        final TimePickerDialog S_Tdialog = new TimePickerDialog(this, stimeListener, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), true);
         final DatePickerDialog E_Ddialog = new DatePickerDialog(this, edateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, hour, minute, true);
+        final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), true);
 
         //================================= OnClick Listener About DATE & TIME
         startdate_btn.setOnClickListener(new View.OnClickListener() {

@@ -55,6 +55,7 @@ public class MealActivity extends AppCompatActivity {
 
         try {
             menu = mealParsing.execute(year, month, day).get();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
