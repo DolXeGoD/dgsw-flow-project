@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import dgsw.hs.kr.flow.Database.DBManager;
+import dgsw.hs.kr.flow.Database.TokenDBManager;
 import dgsw.hs.kr.flow.R;
 
 public class DBManagerTestActivity extends AppCompatActivity {
@@ -22,13 +22,13 @@ public class DBManagerTestActivity extends AppCompatActivity {
         final Button btn_insert = findViewById(R.id.btn_insertTest);
         final Button btn_delete = findViewById(R.id.btn_delete);
         final TextView resultTv = findViewById(R.id.tv_resultOfSelect);
-        final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
+        final TokenDBManager tokenDbManager = new TokenDBManager(getApplicationContext(), "FlowUser.db", null, 1);
         resultTv.setText("thistextisnotincludeanymeans");
 
         btn_select.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                shit = dbManager.select();
+                shit = tokenDbManager.select();
                 resultTv.setText(shit);
             }
         });
@@ -36,14 +36,14 @@ public class DBManagerTestActivity extends AppCompatActivity {
         btn_insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbManager.insert(test);
+                tokenDbManager.insert(test);
             }
         });
 
         btn_delete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                dbManager.delete();
+                tokenDbManager.delete();
             }
         });
     }

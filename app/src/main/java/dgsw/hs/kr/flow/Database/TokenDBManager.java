@@ -10,12 +10,12 @@ import android.util.Log;
  * Created by 조현재 on 2018-05-08.
  */
 
-public class DBManager extends SQLiteOpenHelper{
+public class TokenDBManager extends SQLiteOpenHelper{
 
     public int testIdx;
     public String testToken;
     public int count;
-    public DBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public TokenDBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 

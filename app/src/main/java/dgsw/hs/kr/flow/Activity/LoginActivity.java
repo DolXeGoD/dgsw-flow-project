@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import dgsw.hs.kr.flow.Database.DBManager;
+import dgsw.hs.kr.flow.Database.TokenDBManager;
 import dgsw.hs.kr.flow.Model.request.Login;
 import dgsw.hs.kr.flow.Model.response.ResponseFormat;
 import dgsw.hs.kr.flow.Utils.APIUtills;
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
+        final TokenDBManager tokenDbManager = new TokenDBManager(getApplicationContext(), "FlowUser.db", null, 1);
         final EditText emailEt = findViewById(R.id.et_login_email);
         final EditText pwEt = findViewById(R.id.et_login_pw);
         final Button loginBtn = findViewById(R.id.btn_login);
@@ -86,10 +86,10 @@ public class LoginActivity extends AppCompatActivity {
                                     userToken = response.body().getResponseFormatData().getToken();
                                     Log.i(TAG, "USER TOKEN : " + response.body().getResponseFormatData().getToken());
                                     //DB에 유저 토큰 저장.
-                                    dbManager.insert(userToken);
+                                    tokenDbManager.insert(userToken);
                                     Toast.makeText(getApplicationContext(),"토큰을 저장하였습니다.",Toast.LENGTH_LONG).show();
                                     //db 조회해서 토큰 값 있는지 확인
-                                    dbManager.select();
+                                    tokenDbManager.select();
 
                                     //메인으로 이동.
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
