@@ -59,28 +59,7 @@ public class OutDBManager extends SQLiteOpenHelper{
         Cursor cursor = null;
         cursor = db.rawQuery(query, null);
 
-        /*cursor.moveToNext();*/
         count = cursor.getCount();
-        /*Log.i("FUCK YOU SSIBAL ",  cursor.getInt(1) + " fuck " + cursor.getString(3));*/
-        /*for(int i = 0;i < count;i++){
-            cursor.moveToNext();
-            Log.i("VALUE TEST", "and accept : " + cursor.getInt(1) + "and start_time : " + cursor.getString(2)
-                    + "and end_time : " + cursor.getString(3) + " end reason : " + cursor.getString(4)
-                    + "and class_idx" + cursor.getInt(5) );
-        }*/
-
-        /*int rLength=cursor.getCount(); // 현재 row 번호(=전체 row갯수)
-        int cLength=cursor.getColumnCount(); // 컬럼 갯수
-
-        String[][] array=new String[rLength][cLength]; // row,column 2차원 배열 생성
-
-        for(int i=0;i<rLength;i++){ // 행 길이 만큼 반복
-            for(int j=0;j<cLength;j++){ // 열 길이 만큼 반복
-                array[i][j]=cursor.getString(j); // 반복문 j로 한 행의 모든 컬럼을 읽음
-                Log.i("THIS IS JUST TEST AND ", "DATA : "+ array[i][j]);
-            }
-            cursor.moveToNext(); // 다음 행으로 이동
-        }*/
 
         Log.i("THIS IS JUST TEST AND ", "THIS IS DB COUNT RESULT : "+ count);
 

@@ -138,38 +138,6 @@ public class OutActivity extends AppCompatActivity {
                     Log.i(TAG, "request msg : " + REASON_TO_OUT);
                     Toast.makeText(getApplicationContext(), "레트로핏 시작.", Toast.LENGTH_SHORT).show();
 
-                    /*
-                    ========================= TEST CODE START =========================
-                     */
-                   /* mRTService = APIUtills.getAPIService();
-                    mResponse = mRTService.goOutPost(out, USER_TOKEN);
-                    mResponse.enqueue(new Callback<ResponseFormat>() {
-                        @Override
-                        public void onResponse(Call<ResponseFormat> call, Response<ResponseFormat> response) {
-                            Toast.makeText(getApplicationContext(),"AAAAAAAAA.",Toast.LENGTH_LONG).show();
-                            Log.i(TAG, "response msg : " + response.message().toString());
-                            Log.i(TAG, "response code : " + response.code());
-
-                            Log.i(TAG, "server msg : " + response.body().getMessage());
-                            Log.i(TAG, "server code : " + response.body().getStatus());
-
-                            if(response.body().getStatus() == 200){
-                                System.out.println("성공");
-                                Toast.makeText(getApplicationContext(),"외출 신청 성공.",Toast.LENGTH_LONG).show();
-                            }else{
-                                Toast.makeText(getApplicationContext(),"외출 신청 실패하였습니다.",Toast.LENGTH_LONG).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponseFormat> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(),"FFFFFFFFFFFFUUUUUUUUUUCCCCCCCCCC.",Toast.LENGTH_LONG).show();
-                        }
-                    });*/
-                    /*
-                    ========================= TEST CODE END =========================
-                     */
-
                     mRTService = APIUtills.getAPIService(); //start of retrofit
                     if(isUserSleep == false){
                         mResponse = mRTService.goOutPost(out, USER_TOKEN);
