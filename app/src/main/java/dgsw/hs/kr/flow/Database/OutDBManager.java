@@ -59,13 +59,9 @@ public class OutDBManager extends SQLiteOpenHelper{
         Cursor cursor = null;
         cursor = db.rawQuery(query, null);
 
-        if(cursor!=null){
-            cursor.moveToFirst();
-        }
-
-        cursor = db.rawQuery(query, null);
+        /*cursor.moveToNext();*/
         count = cursor.getCount();
-
+        /*Log.i("FUCK YOU SSIBAL ",  cursor.getInt(1) + " fuck " + cursor.getString(3));*/
         /*for(int i = 0;i < count;i++){
             cursor.moveToNext();
             Log.i("VALUE TEST", "and accept : " + cursor.getInt(1) + "and start_time : " + cursor.getString(2)

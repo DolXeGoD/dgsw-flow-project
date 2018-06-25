@@ -1,10 +1,13 @@
 package dgsw.hs.kr.flow.Activity;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import dgsw.hs.kr.flow.Database.OutDBManager;
 import dgsw.hs.kr.flow.Database.TokenDBManager;
@@ -35,7 +38,14 @@ public class DBManagerTestActivity extends AppCompatActivity {
         btn_select.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                array = outDbManager.select();
+                Cursor cursor;
+                cursor = outDbManager.select(1);
+                cursor.moveToNext();
+                int accept = cursor.getInt(1);
+                String start_time = cursor.getString(2);
+                String student_email = cursor.getString(6);
+                Toast.makeText(getApplicationContext(), accept + ", " + start_time + ", " + student_email,Toast.LENGTH_SHORT);
+                Log.i("fucl", accept + "" + start_time + "" + student_email);
             }
         });
 
