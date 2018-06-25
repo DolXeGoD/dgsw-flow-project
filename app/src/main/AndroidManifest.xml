@@ -16,30 +16,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity">
-
-        </activity>
+        <activity android:name=".Activity.MainActivity"></activity>
         <activity android:name=".Activity.MealActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.LoginActivity">
-
-        </activity>
-        <activity android:name=".Activity.OutActivity">
-
-        </activity>
-        <activity android:name=".Activity.DBManagerTestActivity" >
+        <activity android:name=".Activity.LoginActivity"></activity>
+        <activity android:name=".Activity.OutActivity"></activity>
+        <activity android:name=".Activity.DBManagerTestActivity"></activity>
+        <activity android:name=".Activity.NoticeListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.NoticeListActivity">
-
-        </activity>
-        <activity android:name=".Activity.NoticeDetailActivity">
-
-        </activity>
+        <activity android:name=".Activity.NoticeDetailActivity"></activity>
+        <activity android:name=".Activity.OutListActivity"></activity>
     </application>
 
 </manifest>
