@@ -35,7 +35,7 @@ public class NoticeListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notice_list);
         lv_notice = findViewById(R.id.lv_notice_list);
         final ArrayList<NoticeListItem> data = new ArrayList<>();
-        final NoticeListAdapter adapter = new NoticeListAdapter(this, R.layout.item,data);
+        final NoticeListAdapter adapter = new NoticeListAdapter(this, R.layout.notice_item,data);
 
         mRTService = APIUtills.getAPIService();
         mResponse = mRTService.noticeGet(USER_TOKEN);

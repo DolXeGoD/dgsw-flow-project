@@ -35,6 +35,7 @@ public class NoticeDetailActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         if(extras != null){
             notice_index = (Integer) extras.get("notice_index");
+            Log.i("ffff", "" + notice_index);
         }else{
             Log.e(TAG, "Failed to get extras");
         }
