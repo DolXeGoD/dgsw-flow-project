@@ -19,18 +19,30 @@
         <activity android:name=".Activity.MainActivity"></activity>
         <activity android:name=".Activity.MealActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.LoginActivity"></activity>
-        <activity android:name=".Activity.OutActivity"></activity>
-        <activity android:name=".Activity.DBManagerTestActivity"></activity>
-        <activity android:name=".Activity.NoticeListActivity">
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.OutActivity"></activity>
+        <activity android:name=".Activity.DBManagerTestActivity">
+
+        </activity>
+        <activity android:name=".Activity.NoticeListActivity">
+
+        </activity>
         <activity android:name=".Activity.NoticeDetailActivity"></activity>
-        <activity android:name=".Activity.OutListActivity"></activity>
+        <activity android:name=".Activity.OutListActivity">
+
+        </activity>
+
+        <service android:name=".Service.FCMService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
