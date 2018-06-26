@@ -15,7 +15,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import java.util.Calendar;
 
-import dgsw.hs.kr.flow.Database.TokenDBManager;
+import dgsw.hs.kr.flow.Database.DBManager;
 import dgsw.hs.kr.flow.Model.request.Out;
 import dgsw.hs.kr.flow.Model.response.ResponseFormat;
 import dgsw.hs.kr.flow.Network.RetrofitService;
@@ -58,15 +58,15 @@ public class OutActivity extends AppCompatActivity {
         final CheckBox isGo = findViewById(R.id.isGoOut);
         final CheckBox isSleep = findViewById(R.id.isSleepOut);
         final EditText reason_et = findViewById(R.id.et_reason);
-        final TokenDBManager tokenDbManager = new TokenDBManager(getApplicationContext(), "FlowUser.db", null, 1);
+        final DBManager dbManager = new DBManager(getApplicationContext(), "FlowUser.db", null, 1);
         //유저 인증 토큰
         USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MiwiYXV0aCI6MiwiaWF0IjoxNTI5MzcwNTYxLCJleHAiOjE1Mjk5NzUzNjEsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.k-R39u26IjDFCQumuYFEmP9_ZMT7m27NJ3QLnhDCRHs";
 
         final Calendar cal = Calendar.getInstance();
         final DatePickerDialog S_Ddialog = new DatePickerDialog(this, sdateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        final TimePickerDialog S_Tdialog = new TimePickerDialog(this, stimeListener, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), true);
+        final TimePickerDialog S_Tdialog = new TimePickerDialog(this, stimeListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true);
         final DatePickerDialog E_Ddialog = new DatePickerDialog(this, edateListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), true);
+        final TimePickerDialog E_Tdialog = new TimePickerDialog(this, etimeListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true);
 
         //================================= OnClick Listener About DATE & TIME
         startdate_btn.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +116,7 @@ public class OutActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "버튼 눌림.", Toast.LENGTH_SHORT).show();
 
                 REASON_TO_OUT = reason_et.getText().toString().trim();
-                Out out = new Out();
+                final Out out = new Out();
 
                 //모델 세팅 전 값 비었는지 검사.
                 if(S_DATETIME!=null&&E_DATETIME!=null&&!TextUtils.isEmpty(REASON_TO_OUT)){
@@ -158,6 +158,16 @@ public class OutActivity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(),"외출 신청 성공.",Toast.LENGTH_LONG).show();
                                             Log.i(TAG, "re-check ur goout starttime : " + response.body().getResponseFormatData().getGo_out().getStart_time());
                                             Log.i(TAG, "re-check ur goout endtime : " + response.body().getResponseFormatData().getGo_out().getEnd_time());
+
+                                            //외출 신청 기록을 DB에 저장
+                                            int accept = 0;
+                                            String start_time = response.body().getResponseFormatData().getGo_out().getStart_time();
+                                            String end_time =  response.body().getResponseFormatData().getGo_out().getEnd_time();
+                                            String reason = response.body().getResponseFormatData().getGo_out().getReason();
+                                            int class_idx = response.body().getResponseFormatData().getGo_out().getClass_idx();
+                                            String student_email = response.body().getResponseFormatData().getGo_out().getStudent_email();
+                                            int server_idx = response.body().getResponseFormatData().getGo_out().getIdx();
+                                            dbManager.out_insert(accept, start_time, end_time, reason, class_idx, student_email, server_idx);
                                         } else{
                                             Log.i(TAG, "server is well response, but failed to get data.. Check the error code. ");
                                         }
@@ -192,6 +202,15 @@ public class OutActivity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(),"외박 신청 성공.",Toast.LENGTH_LONG).show();
                                             Log.i(TAG, "re-check ur goout starttime : " + response.body().getResponseFormatData().getSleep_out().getStart_time());
                                             Log.i(TAG, "re-check ur goout endtime : " + response.body().getResponseFormatData().getSleep_out().getEnd_time());
+
+                                            //외박 신청 기록을 DB에 저장
+                                            String start_time = response.body().getResponseFormatData().getSleep_out().getStart_time();
+                                            String end_time =  response.body().getResponseFormatData().getSleep_out().getEnd_time();
+                                            String reason = response.body().getResponseFormatData().getSleep_out().getReason();
+                                            int class_idx = response.body().getResponseFormatData().getSleep_out().getClass_idx();
+                                            String student_email = response.body().getResponseFormatData().getSleep_out().getStudent_email();
+                                            int server_idx = response.body().getResponseFormatData().getSleep_out().getIdx();
+                                            dbManager.out_insert(0, start_time, end_time, reason, class_idx, student_email, server_idx);
                                         } else{
                                             Log.i(TAG, "server is well response, but failed to get data.. Check the error code. ");
                                         }

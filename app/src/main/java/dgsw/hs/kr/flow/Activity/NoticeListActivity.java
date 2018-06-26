@@ -29,7 +29,6 @@ public class NoticeListActivity extends AppCompatActivity {
     private String result_data;
     private int NOTICE_COUNT;
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice_list);
@@ -49,7 +48,7 @@ public class NoticeListActivity extends AppCompatActivity {
                     Log.i(TAG, "server code : " + response.body().getStatus());
                     if(response.body().getStatus() == 200){
                         NOTICE_COUNT = response.body().getResponseFormatData().getList().length;
-                        for(int i=0; i < 10;i++) { //최근 공지 10개
+                        for(int i=0; i < NOTICE_COUNT;i++) { //최근 공지 10개
                             result_data = response.body().getResponseFormatData().getList()[i].getContent();
                             Log.i(TAG, "CONTENT OF NOTICE : " + response.body().getResponseFormatData().getList()[i].getContent());
                             Log.i(TAG, "NOTICE COUNT VALUE : " + NOTICE_COUNT);
