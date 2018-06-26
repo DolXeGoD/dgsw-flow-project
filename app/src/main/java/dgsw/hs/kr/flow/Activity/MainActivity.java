@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button choiceMealBtn;
     private Button requestOutBtn;
     private Button getNoticeBtn;
+    private Button outRequestListBtn;
 
     private int year;
     private int month;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         choiceMealBtn = findViewById(R.id.btn_choice_meal);
         requestOutBtn = findViewById(R.id.btn_request_out);
         getNoticeBtn = findViewById(R.id.btn_get_notice);
+        outRequestListBtn = findViewById(R.id.btn_out_list);
 
         //다음 급식 조회 버튼 리스너 -> MealActivity로 이동
         nextMealBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,10 +81,28 @@ public class MainActivity extends AppCompatActivity {
         requestOutBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, OutActivity.class);
+                Intent intent = new Intent(getApplicationContext(), OutActivity.class);
                 startActivity(intent);
             }
         });
+
+        outRequestListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OutListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        getNoticeBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), NoticeListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     //원하는 날짜 선택 후 -> MealActivity로 이동
