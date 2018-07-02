@@ -25,7 +25,7 @@ public class NoticeListActivity extends AppCompatActivity {
     private RetrofitService mRTService;
     private Call<ResponseFormat> mResponse;
     private static final String TAG = "NoticeListActivity";
-    private String USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MiwiYXV0aCI6MiwiaWF0IjoxNTI5NjMwNzYxLCJleHAiOjE1MzAyMzU1NjEsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.3_bcgVb0bSyQXA4qQx_7qH1wANS13G69lmCx8s3GL8o";
+    private String USER_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiIwMDB3aGd1c3dvQGRnc3cuaHMua3IiLCJjbGFzc0lkeCI6MiwiYXV0aCI6MiwiaWF0IjoxNTMwMjUwNDExLCJleHAiOjE1MzA4NTUyMTEsImlzcyI6ImplZmZjaG9pLmNvbSIsInN1YiI6InRva2VuIn0.WV94J6aX4AVfunMlwHYcqJjslqx6y_C19W8y8dtMaFw";
     private String result_data;
     private int NOTICE_COUNT;
 
