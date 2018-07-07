@@ -12,3 +12,5 @@
 * 외박 신청 시 서버에서 날짜 하루 이상 차이나는지 검사 안해줌   
 * RegisterActivity에도 OutActivity처럼 response 값 케이스 별 검사해서 NullPointerExeption 방지   
 * SQLITE 쿼리문들 수정 -> row 10개 초과시 1번 row(가장 예전에 들어온 값) 부터 날려야 함.  
+
+## 서버 
